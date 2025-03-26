@@ -1,0 +1,52 @@
+/* slideshow.css */
+.slideshow-container02 {
+    position: relative;
+    width: 80vw;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: black;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    margin: 80px auto !important;
+}
+
+.slide02 {
+    width: 80vw;
+    height: 80vh;
+    transition: all 0.6s ease-in-out;
+    object-fit: cover;
+    filter: grayscale(0);
+}
+
+.slide02:hover {
+    filter: grayscale(0);
+}
+
+.prev-btn02,
+.next-btn02 {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.5);
+    border: none;
+    padding: 15px;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.prev-btn02 {
+    left: 20px;
+}
+
+.next-btn02 {
+    right: 20px;
+}
+
+.prev-btn02:hover,
+.next-btn02:hover {
+    background: rgba(255, 255, 255, 0.8);
+}
