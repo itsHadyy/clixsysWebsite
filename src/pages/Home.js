@@ -121,7 +121,7 @@ function Home() {
   return (
     <div>
       <div className="hero">
-        <video className="heroVideo" autoPlay muted loop playsInline>
+        <video className="heroVideo" autoPlay muted loop playsInline poster="./media/slider/img01.webp">
           <source src="./VideoTeaser.mp4" type="video/mp4" />
           Your browser does not support the videos.
         </video>

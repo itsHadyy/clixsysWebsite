@@ -107,7 +107,7 @@ function About() {
         <div>
             <div className='container'>
                 <div className='home01'>
-                    <img src={logo} alt="Logo" className="logo02" />
+                    <img src={logo} alt="Logo" className="logo02" loading="lazy" />
                     <p>Discover who we are and what we do.</p>
                     <div className='about01'>
                         <p>
@@ -147,6 +147,7 @@ function About() {
                                     src={member.image}
                                     alt={member.name}
                                     onError={(e) => (e.target.src = "./media/default-avatar.jpg")}
+                                    loading="lazy"
                                 />
                                 <h3>{member.name}</h3>
                                 <p>{member.title}</p>
@@ -171,6 +172,7 @@ function About() {
                                         src={selectedMember.image}
                                         alt={selectedMember.name}
                                         className="modal-image"
+                                        loading="lazy"
                                     />
                                     <h3>{selectedMember.name}</h3>
                                     <p className="modal-title">{selectedMember.title}</p>
@@ -204,7 +206,7 @@ function About() {
                 </div>
             </div>
             <div className='home01 ceoLetter'>
-                <img src={logo2} alt="Logo" className="logo02" />
+                <img src={logo2} alt="Logo" className="logo02" loading="lazy" />
                 <h2>CEO Open Letter</h2>
                 <div className='about01'>
                     <p>
@@ -213,7 +215,7 @@ function About() {
                         Our aim is to let people live and enjoy their daily life with a unique touch from the future.
                     </p>
                     <p>Sincerely,</p>
-                    <img src='./hf.webp' alt="Logo" className="hk" />
+                    <img src='./hf.webp' alt="Logo" className="hk" loading="lazy" />
                 </div>
             </div>
         </div >

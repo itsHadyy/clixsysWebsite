@@ -27,35 +27,30 @@ const Slideshow = ({ direction = "left" }) => {
   const imagesToDisplay = [...images, ...images];
 
   useEffect(() => {
-    let animationId;
+    let intervalId;
 
-    const startAnimation = () => {
+    const scrollStep = () => {
       const slideshow = slideshowRef.current;
       const scrollAmount = direction === "left" ? 1 : -1;
-
       slideshow.scrollLeft += scrollAmount;
-
-      // Check if the scroll reached the end of the first set
       if (
         direction === "left" &&
         slideshow.scrollLeft >= slideshow.scrollWidth / 2
       ) {
-        slideshow.scrollLeft = 0; // Reset to start
+        slideshow.scrollLeft = 0;
       } else if (
         direction === "right" &&
         slideshow.scrollLeft <= 0
       ) {
-        slideshow.scrollLeft = slideshow.scrollWidth / 2; // Reset to second set
+        slideshow.scrollLeft = slideshow.scrollWidth / 2;
       }
-
-      animationId = requestAnimationFrame(startAnimation);
     };
 
     if (!isHovered) {
-      animationId = requestAnimationFrame(startAnimation);
+      intervalId = setInterval(scrollStep, 1000 / 60); // 60fps
     }
 
-    return () => cancelAnimationFrame(animationId); // Cleanup on unmount
+    return () => clearInterval(intervalId);
   }, [isHovered, direction]);
 
   return (
@@ -67,7 +62,7 @@ const Slideshow = ({ direction = "left" }) => {
     >
       <div className="slideshow-track">
         {imagesToDisplay.map((image, index) => (
-          <img key={index} src={image} alt={`Slide ${index + 1}`} />
+          <img key={index} src={image} alt={`Slide ${index + 1}`} loading="lazy" />
         ))}
       </div>
     </div>

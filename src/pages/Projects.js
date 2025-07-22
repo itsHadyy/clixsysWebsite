@@ -34,48 +34,48 @@ const Projects = () => {
 
 
     const [isFading, setIsFading] = useState(false);
+    const [isModalVisible, setIsModalVisible] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const openModal = (project) => {
         setSelectedProject(project);
-        setCurrentSlide(0); // Reset to the first slide
-        setTimeout(() => {
-            gsap.fromTo(
-                ".modalContainer",
-                { opacity: 0, scale: 0.8 }, // Start state
-                { opacity: 1, scale: 1, duration: 0.3, ease: "power3.inOut" } // End state
-            );
-        }, 10); // Short delay to ensure GSAP animates the modal
+        setCurrentSlide(0);
+        setIsModalVisible(true);
     };
 
     const closeModal = () => {
-        gsap.to(".modalContainer", {
-            opacity: 0,
-            scale: 0.8,
-            duration: 0.3, // Match the duration with the opening animation
-            ease: "power3.inOut", // Match the ease with the opening animation
-            onComplete: () => setSelectedProject(null),
-        });
+        setIsModalOpen(false);
+        setTimeout(() => {
+            setIsModalVisible(false);
+            setSelectedProject(null);
+        }, 300); // Match CSS transition duration
     };
 
     const handleNextSlide = () => {
         setIsFading(true);
-        setTimeout(() => {
+        let frame;
+        const animate = () => {
             setCurrentSlide((prevSlide) =>
                 (prevSlide + 1) % selectedProject.images.length
             );
             setIsFading(false);
-        }, 300); // Match the CSS animation duration
+            cancelAnimationFrame(frame);
+        };
+        frame = requestAnimationFrame(() => setTimeout(animate, 300)); // 300ms fade
     };
 
     const handlePrevSlide = () => {
         setIsFading(true);
-        setTimeout(() => {
+        let frame;
+        const animate = () => {
             setCurrentSlide((prevSlide) =>
                 (prevSlide - 1 + selectedProject.images.length) %
                 selectedProject.images.length
             );
             setIsFading(false);
-        }, 300); // Match the CSS animation duration
+            cancelAnimationFrame(frame);
+        };
+        frame = requestAnimationFrame(() => setTimeout(animate, 300)); // 300ms fade
     };
 
     const counterSectionRef = useRef(null);
@@ -118,6 +118,15 @@ const Projects = () => {
             ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
         };
     }, []);
+
+    useEffect(() => {
+        if (isModalVisible) {
+            const timer = setTimeout(() => setIsModalOpen(true), 10);
+            return () => clearTimeout(timer);
+        } else {
+            setIsModalOpen(false);
+        }
+    }, [isModalVisible]);
     return (
         <div className="container proj">
             <div className="projects-page">
@@ -139,7 +148,7 @@ const Projects = () => {
                             }
                             onClick={() => openModal(project)}
                         >
-                            <img src={project.images[0]} alt={project.name} className="project-image" />
+                            <img src={project.images[0]} alt={project.name} className="project-image" loading="lazy" style={{ willChange: 'transform, opacity' }} />
                             <div className="project-info">
                                 <h2 className="project-name">{project.name}</h2>
                             </div>
@@ -149,9 +158,12 @@ const Projects = () => {
             </div>
 
             {/* Modal */}
-            {selectedProject && (
+            {isModalVisible && (
                 <div className="modal-overlay" onClick={closeModal}>
-                    <div className="modalContainer">
+                    <div
+                        className={`modalContainer${isModalOpen ? ' open' : ' closed'}`}
+                        style={{ willChange: 'opacity, transform' }}
+                    >
                         <div className="modalContainer02">
                             <div
                                 ref={modalRef}
@@ -166,16 +178,18 @@ const Projects = () => {
                                         ‹
                                     </button>
                                     <img
-                                        src={selectedProject.images[currentSlide]}
+                                        src={selectedProject?.images[currentSlide]}
                                         alt={`Slide ${currentSlide + 1}`}
                                         className={`slide-image ${isFading ? "fade-in" : ""}`}
+                                        loading="lazy"
+                                        style={{ willChange: 'transform, opacity' }}
                                     />
                                     <button className="next-btn" onClick={handleNextSlide}>
                                         ›
                                     </button>
                                 </div>
-                                <h2 className="modal-title">{selectedProject.name}</h2>
-                                <p className="modal-description">{selectedProject.description}</p>
+                                <h2 className="modal-title">{selectedProject?.name}</h2>
+                                <p className="modal-description">{selectedProject?.description}</p>
                             </div>
                         </div>
                     </div>

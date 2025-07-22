@@ -100,6 +100,7 @@ const Features25 = (props) => {
             alt={props.feature1ImgAlt}
             src={props.feature1ImgSrc}
             className="features24-image1 thq-img-ratio-16-9"
+            loading="lazy"
           />
         )}
         {activeTab === 1 && (
@@ -107,6 +108,7 @@ const Features25 = (props) => {
             alt={props.feature2ImgAlt}
             src={props.feature2ImgSrc}
             className="features24-image2 thq-img-ratio-16-9"
+            loading="lazy"
           />
         )}
         {activeTab === 2 && (
@@ -114,6 +116,7 @@ const Features25 = (props) => {
             alt={props.feature3ImgAlt}
             src={props.feature3ImgSrc}
             className="features24-image3 thq-img-ratio-16-9"
+            loading="lazy"
           />
         )}
       </div>

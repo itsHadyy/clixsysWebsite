@@ -42,7 +42,7 @@ function Navbar() {
     <div className={`nav ${showNavbar ? "visible" : "hidden"}`}>
       <div className="links">
         <Link to="/">
-          <img src={logo} alt="Logo" className="logo" />
+          <img src={logo} alt="Logo" className="logo" loading="lazy" />
         </Link>
         <ul>
           <li><Link to="/" className="animated-link">Home</Link></li>

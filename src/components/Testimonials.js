@@ -12,6 +12,7 @@ const Testimonials = (props) => {
                             <img
                                 alt={props.author1Alt}
                                 src={props.author1Src}
+                                loading="lazy"
                             />
                             <div className="testimonialData">
                                 <h3>John Doe</h3>
@@ -28,6 +29,7 @@ const Testimonials = (props) => {
                             <img
                                 alt={props.author2Alt}
                                 src={props.author2Src}
+                                loading="lazy"
                             />
                             <div className="testimonialData">
                                 <h3>Jane Smith</h3>
@@ -44,6 +46,7 @@ const Testimonials = (props) => {
                             <img
                                 alt={props.author3Alt}
                                 src={props.author3Src}
+                                loading="lazy"
                             />
                             <div className="testimonialData">
                                 <h3>Sarah Brown</h3>
@@ -60,6 +63,7 @@ const Testimonials = (props) => {
                             <img
                                 alt={props.author4Alt}
                                 src={props.author4Src}
+                                loading="lazy"
                             />
                             <div className="testimonialData">
                                 <h3>David Johnson</h3>

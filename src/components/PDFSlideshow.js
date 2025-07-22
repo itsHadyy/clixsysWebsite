@@ -29,7 +29,7 @@ const PDFSlideshow = () => {
 
     return (
         <div className="slideshow-container02">
-            <img src={slides[currentSlide]} alt="Slide02" className="slide02" />
+            <img src={slides[currentSlide]} alt="Slide02" className="slide02" loading="lazy" />
             <button className="prev-btn02" onClick={prevSlide}>
                 ‹
             </button>

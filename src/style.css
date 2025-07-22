@@ -1105,10 +1105,28 @@ form .btn {
   z-index: 1000;
 }
 
-/* Ensure transition for smooth slide-in */
 .sideNav.open {
   right: 0;
   transition: right 0.3s ease-in-out;
+}
+
+.modalContainer {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  opacity: 0;
+  transition: opacity 0.3s cubic-bezier(.4,0,.2,1);
+  will-change: opacity;
+}
+
+.modalContainer.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modalContainer.closed {
+  opacity: 0;
+  pointer-events: none;
 }
 
 @media (max-width: 768px) {
