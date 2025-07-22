@@ -41,7 +41,9 @@ function Navbar() {
   return (
     <div className={`nav ${showNavbar ? "visible" : "hidden"}`}>
       <div className="links">
-        <img src={logo} alt="Logo" className="logo" />
+        <Link to="/">
+          <img src={logo} alt="Logo" className="logo" />
+        </Link>
         <ul>
           <li><Link to="/" className="animated-link">Home</Link></li>
           <li className="dropdown" onMouseEnter={() => setDropdownVisible(true)} onMouseLeave={() => setDropdownVisible(false)}>

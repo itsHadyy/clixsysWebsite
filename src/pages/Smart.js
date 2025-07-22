@@ -1,6 +1,5 @@
 import React from "react";
 import "../style.css";
-import Card from "../components/Card";
 import Features24 from "../components/features24";
 import Features25 from "../components/features25";
 import Slideshow from "../components/Slideshow";

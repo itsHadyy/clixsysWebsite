@@ -1,8 +1,5 @@
-import React, { useRef, useEffect } from "react";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
+import React from "react";
 import "../style.css";
-import Contact from "./Contact";
 import Card from '../components/Card';
 import Slideshow from "../components/Slideshow";
 import Quote from "./Quote";
@@ -31,6 +28,9 @@ const Software = () => {
             </div>
             <Slideshow direction="right" />
             <PDFSlideshow />
+            <div className="container">
+                <Quote />
+            </div >
         </div >
     );
 };

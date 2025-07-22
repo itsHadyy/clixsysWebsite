@@ -8,7 +8,6 @@ import '../components/features24.css'
 import Features25 from '../components/features25';
 import CTA26 from '../components/cta26';
 import Counter from '../components/Counter';
-import Testimonials from '../components/Testimonials';
 import Contact from '../components/Contact';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';

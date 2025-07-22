@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import '../style.css';
 import logo from '../logo01.webp';
 import logo2 from '../logo02.webp';

@@ -7,7 +7,7 @@ const Projects = () => {
     const [selectedProject, setSelectedProject] = useState(null); // Store the clicked project
     const [currentSlide, setCurrentSlide] = useState(0); // Track the current slide in the slideshow
     const modalRef = useRef(null); // Reference for the modal
-    const autoSlideInterval = useRef(null); // Reference for automatic slideshow timer
+    // const autoSlideInterval = useRef(null);
 
     const projects = [
         {

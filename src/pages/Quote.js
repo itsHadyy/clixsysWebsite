@@ -12,7 +12,7 @@ const Quote = ({ children }) => {
   });
 
   const [submitted, setSubmitted] = useState(false);
-  const [placeholders, setPlaceholders] = useState({
+  const [placeholders] = useState({
     name: "Your Name",
     co: "Company Name",
     email: "Email Address",
@@ -20,7 +20,7 @@ const Quote = ({ children }) => {
     social: "Company Link",
     message: "Your Message",
   });
-  const [descriptions, setDescriptions] = useState({
+  const [descriptions] = useState({
     name: "Please enter your full name",
     co: "Please enter your company name",
     email: "Please enter your email address",
