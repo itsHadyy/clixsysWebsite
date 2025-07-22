@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import '../style.css';
 import { SlArrowDown } from "react-icons/sl";
 import { Link } from 'react-router-dom';
@@ -15,6 +15,7 @@ import { Link as ScrollLink } from "react-scroll";
 
 
 function Home() {
+  const counterRef = useRef();
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
@@ -60,7 +61,6 @@ function Home() {
         }
       });
 
-    // Animating Containers (Slideshow, Features, CTA, Counter)
     gsap.fromTo('.home01',
       { opacity: 0, y: 50 },
       {
@@ -76,7 +76,7 @@ function Home() {
       {
         opacity: 1, y: 0, duration: 1, scrollTrigger: {
           trigger: '.slideshow-container',
-          start: 'top 70%',
+          start: 'top 80%',
           toggleActions: 'play none none none'
         }
       });
@@ -87,7 +87,7 @@ function Home() {
       {
         opacity: 1, y: 0, duration: 1, scrollTrigger: {
           trigger: '.thq-section-padding',
-          start: 'top 70%',
+          start: 'top 90%',
           toggleActions: 'play none none none'
         }
       });
@@ -95,19 +95,25 @@ function Home() {
     gsap.fromTo('.counter-container',
       { opacity: 0, y: 100 },
       {
-        opacity: 1, y: 0, duration: 1, scrollTrigger: {
+        opacity: 1, y: 0, duration: 1,
+        scrollTrigger: {
           trigger: '.counter-container',
-          start: 'top 80%',
-          toggleActions: 'play none none none'
+          start: 'top 90%',
+          onEnter: () => {
+            if (counterRef.current && counterRef.current.startAnimation) {
+              counterRef.current.startAnimation();
+            }
+          }
         }
-      });
+      }
+    );
 
     gsap.fromTo('#testimonials',
       { opacity: 0, y: 100 },
       {
         opacity: 1, y: 0, duration: 1, scrollTrigger: {
           trigger: '#testimonials',
-          start: 'top 80%',
+          start: 'top 90%',
           toggleActions: 'play none none none'
         }
       });
@@ -170,7 +176,7 @@ function Home() {
           action1={<span className="home-text126"><ScrollLink to="contact" smooth={true} duration={500}>Get Started</ScrollLink></span>}
         ></CTA26>
 
-        <Counter />
+        <Counter ref={counterRef} />
         {/* <Testimonials /> */}
         <Features25
           feature3Description={<span className="home-text118">Revolutionize the way you host your visitors with cutting-edge interactive technology. Browse the cafeteria menu and place your order effortlessly, all from the table. A smart and stylish way to impress your visitors while redefining convenience.</span>}
