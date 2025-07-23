@@ -176,7 +176,14 @@ function Home() {
           action1={<span className="home-text126"><ScrollLink to="contact" smooth={true} duration={500}>Get Started</ScrollLink></span>}
         ></CTA26>
 
-        <Counter ref={counterRef} />
+        <Counter
+          ref={counterRef}
+          counters={[
+            { title: "Projects", end: 100, subtitle: "Projects" },
+            { title: "Staff", end: 20, subtitle: "Staff" },
+            { title: "Years of Experience", end: 9, subtitle: "Years of Experience" },
+          ]}
+        />
         {/* <Testimonials /> */}
         <Features25
           feature3Description={<span className="home-text118">Revolutionize the way you host your visitors with cutting-edge interactive technology. Browse the cafeteria menu and place your order effortlessly, all from the table. A smart and stylish way to impress your visitors while redefining convenience.</span>}

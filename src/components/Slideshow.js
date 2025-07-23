@@ -31,6 +31,7 @@ const Slideshow = ({ direction = "left" }) => {
 
     const scrollStep = () => {
       const slideshow = slideshowRef.current;
+      if (!slideshow) return; // Prevent error if not mounted
       const scrollAmount = direction === "left" ? 1 : -1;
       slideshow.scrollLeft += scrollAmount;
       if (

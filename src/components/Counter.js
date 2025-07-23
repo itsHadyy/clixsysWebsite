@@ -3,10 +3,15 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const Counter = forwardRef((props, ref) => {
+  // Use props.counters or fallback to default
+  const counters = props.counters || [
+    { label: 'Projects', end: 100 },
+    { label: 'Staff', end: 20 },
+    { label: 'Years of Experience', end: 9 },
+  ];
   const counterSectionRef = useRef(null);
-  const projectsRef = useRef(null);
-  const staffRef = useRef(null);
-  const yearsRef = useRef(null);
+  // Create a ref for each counter
+  const counterRefs = useRef(counters.map(() => React.createRef()));
 
   // Expose startAnimation to parent via ref
   useImperativeHandle(ref, () => ({
@@ -32,25 +37,23 @@ const Counter = forwardRef((props, ref) => {
       );
     };
     // Animate each counter
-    animateCounter(projectsRef, 0, 100);
-    animateCounter(staffRef, 0, 20);
-    animateCounter(yearsRef, 0, 9);
+    counters.forEach((counter, i) => {
+      animateCounter(counterRefs.current[i], 0, counter.end);
+    });
   }
 
   return (
     <div className="counter-container" ref={counterSectionRef}>
-      <div className="counter-item">
-        <h3 ref={projectsRef}>0 +</h3>
-        <p>Projects</p>
-      </div>
-      <div className="counter-item">
-        <h3 ref={staffRef}>0 +</h3>
-        <p>Staff</p>
-      </div>
-      <div className="counter-item">
-        <h3 ref={yearsRef}>0 +</h3>
-        <p>Years of Experience</p>
-      </div>
+      {counters.map((counter, i) => (
+        <div className="counter-item" key={i}>
+          <h3 ref={counterRefs.current[i]} style={{ fontSize: '2.5rem', margin: '0.5rem 0 0 0' }}>
+            0 +
+          </h3>
+          <p>
+            {counter.title}
+          </p>
+        </div>
+      ))}
     </div>
   );
 });

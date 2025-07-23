@@ -7,8 +7,14 @@ import Slideshow from '../components/Slideshow';
 import '../components/features24.css'
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { FiCpu, FiSettings, FiShield, FiSmartphone } from 'react-icons/fi';
+import { MdChair, MdLandscape, MdApartment, MdBuild, MdHome, MdOutlineLightbulb, MdDesk, MdDoorSliding, MdTouchApp, MdTv, MdOutlineVideocam, MdVolumeUp, MdPhoneIphone, MdOutlineSecurity, MdEventSeat } from 'react-icons/md';
+import { GiTurnstile, GiSprout } from 'react-icons/gi';
+import Counter from '../components/Counter';
 
 function About() {
+    const aboutCounterRef = React.useRef();
+
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
 
@@ -42,6 +48,23 @@ function About() {
                     toggleActions: 'play none none none'
                 }
             });
+
+        // Counter animation for About page
+        gsap.fromTo('.about-counter-container',
+            { opacity: 0, y: 100 },
+            {
+                opacity: 1, y: 0, duration: 1,
+                scrollTrigger: {
+                    trigger: '.about-counter-container',
+                    start: 'top 90%',
+                    onEnter: () => {
+                        if (aboutCounterRef.current && aboutCounterRef.current.startAnimation) {
+                            aboutCounterRef.current.startAnimation();
+                        }
+                    }
+                }
+            }
+        );
 
         return () => {
             // Cleanup ScrollTriggers
@@ -121,10 +144,113 @@ function About() {
 
             </div>
 
-            <Slideshow />
+            {/* Scope of Work Section */}
+            <section className="scope-of-work-section">
+                <h2 className="scope-of-work-title">SCOPE OF WORK</h2>
+                <p className="scope-of-work-desc">In Clixsys we have many main scopes of work that makes us who we are.</p>
+                <div className="scope-of-work-grid">
+                    <div className="scope-of-work-col">
+                        <div className="scope-of-work-item">
+                            <span className="scope-icon"><FiCpu /></span>
+                            <span>R&amp;D in technology</span>
+                        </div>
+                        <div className="scope-of-work-item">
+                            <span className="scope-icon"><FiSettings /></span>
+                            <span>Customized automation systems</span>
+                        </div>
+                        <div className="scope-of-work-item">
+                            <span className="scope-icon"><MdApartment /></span>
+                            <span>Smart buildings</span>
+                        </div>
+                        <div className="scope-of-work-item">
+                            <span className="scope-icon"><FiShield /></span>
+                            <span>Security &amp; surveillance solutions</span>
+                        </div>
+                    </div>
+                    <div className="scope-of-work-col">
+                        <div className="scope-of-work-item">
+                            <span className="scope-icon"><MdChair /></span>
+                            <span>Interactive furniture</span>
+                        </div>
+                        <div className="scope-of-work-item">
+                            <span className="scope-icon"><MdLandscape /></span>
+                            <span>Smart landscape</span>
+                        </div>
+                        <div className="scope-of-work-item">
+                            <span className="scope-icon"><MdBuild /></span>
+                            <span>Customized mechanisms</span>
+                        </div>
+                        <div className="scope-of-work-item">
+                            <span className="scope-icon"><FiSmartphone /></span>
+                            <span>App development</span>
+                        </div>
+                    </div>
+                </div>
+
+                <Slideshow />
+
+                <h2 className="products-services-title">PRODUCTS &amp; SERVICES</h2>
+                <div className="products-services-grid">
+                    <div className="products-services-col">
+                        <div className="products-services-item"><span className="products-icon"><MdHome /></span>Home automation systems</div>
+                        <div className="products-services-item"><span className="products-icon"><MdOutlineLightbulb /></span>Smart mirrors</div>
+                        <div className="products-services-item"><span className="products-icon"><MdDesk /></span>Smart desks</div>
+                        <div className="products-services-item"><span className="products-icon"><MdDoorSliding /></span>Smart doors</div>
+                        <div className="products-services-item"><span className="products-icon"><MdTouchApp /></span>Access control</div>
+                    </div>
+                    <div className="products-services-col">
+                        <div className="products-services-item"><span className="products-icon"><GiTurnstile /></span>Turnstile gates</div>
+                        <div className="products-services-item"><span className="products-icon"><MdTv /></span>TV mechanism</div>
+                        <div className="products-services-item"><span className="products-icon"><MdOutlineVideocam /></span>Projector mechanism</div>
+                        <div className="products-services-item"><span className="products-icon"><GiSprout /></span>Irrigation systems</div>
+                        <div className="products-services-item"><span className="products-icon"><MdVolumeUp /></span>Sound system control</div>
+                    </div>
+                    <div className="products-services-col">
+                        <div className="products-services-item"><span className="products-icon"><MdOutlineLightbulb /></span>Software solutions</div>
+                        <div className="products-services-item"><span className="products-icon"><MdPhoneIphone /></span>Mobile app development</div>
+                        <div className="products-services-item"><span className="products-icon"><FiSettings /></span>Customized systems</div>
+                        <div className="products-services-item"><span className="products-icon"><MdOutlineSecurity /></span>Surveillance &amp; security</div>
+                        <div className="products-services-item"><span className="products-icon"><MdEventSeat /></span>Customized interactive furniture</div>
+                    </div>
+                </div>
+
+                <div className="about-counter-container">
+                    <Counter
+                        ref={aboutCounterRef}
+                        counters={[
+                            { title: "Smart Home Projects", end: 50, subtitle: "Projects" },
+                            { title: "Custom Built Systems", end: 20, subtitle: "Projects" },
+                            { title: "App Development", end: 30, subtitle: "Projects" },
+                        ]}
+                    />
+                </div>
+            </section>
 
 
             <div className='container'>
+
+                <div className="aboutCards">
+                    <div className="testimonial02 about02">
+                        <div className="testimonial about02">
+                            <h2>Mission</h2>
+                            <p>
+                                Our mission is to propose the most comprehensive systems to offer comfort,
+                                facilitate usage, and become a leading organization pushing the world into the future.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div className="testimonial02 about02">
+                        <div className="testimonial about02">
+                            <h2>Vision</h2>
+                            <p>
+                                Our vision is to deliver a wide range of innovative, intelligent services to all entities
+                                with assorted disciplines and properties within all segments.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
                 {/* The Team Section */}
                 <section className="team">
                     <div className="teamHeader">
@@ -182,28 +308,6 @@ function About() {
                         </div>
                     </div>
                 )}
-
-                <div className="aboutCards">
-                    <div className="testimonial02 about02">
-                        <div className="testimonial about02">
-                            <h2>Mission</h2>
-                            <p>
-                                Our mission is to propose the most comprehensive systems to offer comfort,
-                                facilitate usage, and become a leading organization pushing the world into the future.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div className="testimonial02 about02">
-                        <div className="testimonial about02">
-                            <h2>Vision</h2>
-                            <p>
-                                Our vision is to deliver a wide range of innovative, intelligent services to all entities
-                                with assorted disciplines and properties within all segments.
-                            </p>
-                        </div>
-                    </div>
-                </div>
             </div>
             <div className='home01 ceoLetter'>
                 <img src={logo2} alt="Logo" className="logo02" loading="lazy" />
