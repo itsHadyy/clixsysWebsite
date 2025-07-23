@@ -1,4 +1,35 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap');
+/* Montserrat 400 */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/montserrat-latin-400.woff2') format('woff2');
+  font-display: swap;
+}
+/* Montserrat 700 */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url('/fonts/montserrat-latin-700.woff2') format('woff2');
+  font-display: swap;
+}
+/* Playfair Display 400 */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/playfair-display-latin-400.woff2') format('woff2');
+  font-display: swap;
+}
+/* Playfair Display 700 */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 700;
+  src: url('/fonts/playfair-display-latin-700.woff2') format('woff2');
+  font-display: swap;
+}
 
 :root {
   --font01: "Montserrat", serif;

@@ -60,7 +60,7 @@ function Navbar() {
       </div>
 
       <div className="nav-btns">
-        <button className="btn01"><Link to="/contact">Contact Us</Link></button>
+        <Link to="/contact" className="btn01">Contact Us</Link>
       </div>
 
       {/* Hamburger Button - Visible only on Mobile */}

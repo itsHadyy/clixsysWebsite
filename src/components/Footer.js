@@ -34,12 +34,7 @@ function Footer() {
                         <p>info@clixsys.com</p>
                     </div>
                     <div>
-                        <button>
-                            <Link to="/Contact">Contact</Link>
-                        </button> <br />
-                        {/* <button>
-                            <Link to="/Contact">Contact</Link>
-                        </button> */}
+                        <Link to="/contact" className="btn01">Contact</Link>
                     </div>
                     {/* <form>
                         <input type="text" placeholder="Email" />
