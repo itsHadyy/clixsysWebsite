@@ -1458,3 +1458,34 @@ form .btn {
   font-weight: 400;
   color: #fff;
 }
+
+.btn01,
+.btn,
+button,
+a.btn01,
+a.btn {
+  min-width: 48px;
+  min-height: 48px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.nav-btns,
+.footer-right {
+  display: flex;
+  gap: 16px;
+}
+
+button,
+a {
+  margin: 8px 0;
+}
+
+/* Ensure Contact buttons/links in nav and footer are not crowded */
+.nav-btns button,
+.footer-right button,
+.footer-right a {
+  margin-right: 12px;
+}

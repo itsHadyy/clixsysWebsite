@@ -32,18 +32,22 @@ const CTA26 = (props) => {
                 </p>
               </div>
               <div className="cta26-actions">
-                <button
-                  type="button"
-                  className="thq-button-filled cta26-button"
-                >
-                  <span>
-                    {props.action1 ?? (
-                      <Fragment>
-                        <span className="cta26-text6">Get Started</span>
-                      </Fragment>
-                    )}
-                  </span>
-                </button>
+                {props.action1 ? (
+                  <button
+                    type="button"
+                    className="thq-button-filled cta26-button"
+                  >
+                    <span>{props.action1}</span>
+                  </button>
+                ) : (
+                  <a
+                    href="/contact"
+                    className="thq-button-filled cta26-button"
+                    style={{ minWidth: 48, minHeight: 48, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
+                  >
+                    Get Started
+                  </a>
+                )}
               </div>
             </div>
           </div>

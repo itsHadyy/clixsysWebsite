@@ -10,13 +10,13 @@ function Footer() {
             <div className="footer-container">
                 <div className="footer-left">
                     <div className='social'>
-                        <Link to="https://www.instagram.com/clixsys_co/">
+                        <Link to="https://www.instagram.com/clixsys_co/" aria-label="Clixsys Instagram">
                             <SlSocialInstagram size={24} />
                         </Link>
-                        <Link to="https://www.linkedin.com/company/clixsys/">
+                        <Link to="https://www.linkedin.com/company/clixsys/" aria-label="Clixsys LinkedIn">
                             <SlSocialLinkedin size={24} />
                         </Link>
-                        <Link to="https://www.facebook.com/Clixsys-102724245572309">
+                        <Link to="https://www.facebook.com/Clixsys-102724245572309" aria-label="Clixsys Facebook">
                             <SlSocialFacebook size={24} />
                         </Link>
 
