@@ -7,20 +7,20 @@ const Slideshow = ({ direction = "left" }) => {
 
   // Array of image paths
   const images = [
-    "./media/slider/img01.webp",
-    "./media/slider/img02.webp",
-    "./media/slider/img03.webp",
-    "./media/slider/img04.webp",
-    "./media/slider/img05.webp",
-    "./media/slider/img06.webp",
-    "./media/slider/img07.webp",
-    "./media/slider/img01.webp",
-    "./media/slider/img02.webp",
-    "./media/slider/img03.webp",
-    "./media/slider/img04.webp",
-    "./media/slider/img05.webp",
-    "./media/slider/img06.webp",
-    "./media/slider/img07.webp",
+    "/media/slider/img01.webp",
+    "/media/slider/img02.webp",
+    "/media/slider/img03.webp",
+    "/media/slider/img04.webp",
+    "/media/slider/img05.webp",
+    "/media/slider/img06.webp",
+    "/media/slider/img07.webp",
+    "/media/slider/img01.webp",
+    "/media/slider/img02.webp",
+    "/media/slider/img03.webp",
+    "/media/slider/img04.webp",
+    "/media/slider/img05.webp",
+    "/media/slider/img06.webp",
+    "/media/slider/img07.webp",
   ];
 
   // Duplicated array to create seamless looping
