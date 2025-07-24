@@ -219,8 +219,8 @@ function About() {
                         ref={aboutCounterRef}
                         counters={[
                             { title: "Smart Home Projects", end: 50, subtitle: "Projects" },
-                            { title: "Custom Built Systems", end: 20, subtitle: "Projects" },
-                            { title: "App Development", end: 30, subtitle: "Projects" },
+                            { title: "Custom Built Systems", end: 30, subtitle: "Projects" },
+                            { title: "App Development", end: 20, subtitle: "Projects" },
                         ]}
                     />
                 </div>

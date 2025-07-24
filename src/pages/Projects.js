@@ -2,6 +2,9 @@ import React, { useState, useEffect, useRef } from "react";
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import gsap from "gsap";
 import Contact from '../components/Contact';
+import { FiCpu, FiSettings, FiShield, FiSmartphone } from 'react-icons/fi';
+import { MdChair, MdLandscape, MdApartment, MdBuild, MdHome, MdOutlineLightbulb, MdDesk, MdDoorSliding, MdTouchApp, MdTv, MdOutlineVideocam, MdVolumeUp, MdPhoneIphone, MdOutlineSecurity, MdEventSeat } from 'react-icons/md';
+import { GiTurnstile, GiSprout } from 'react-icons/gi';
 
 const Projects = () => {
     const [selectedProject, setSelectedProject] = useState(null); // Store the clicked project
@@ -13,22 +16,22 @@ const Projects = () => {
         {
             name: "Smart Home Automation",
             description: "Integrated systems redefining the modern home.",
-            images: ["./media/img05.webp", "./media/img02.webp", "./media/img03.webp"],
+            images: ["./media/slider/ac.webp", "./media/slider/curtain.webp", "./media/slider/access.webp"],
         },
         {
             name: "Energy Efficiency Solutions",
             description: "Optimizing energy for a sustainable future.",
-            images: ["./media/img06.webp", "./media/img04.webp", "./media/img01.webp"],
+            images: ["./media/slider/lighting.webp", "./media/slider/smartDesk.webp"],
         },
         {
             name: "Intelligent Office Spaces",
             description: "Creating workplaces of tomorrow.",
-            images: ["./media/img03.webp", "./media/img07.webp", "./media/img05.webp"],
+            images: ["./media/slider/img03.webp", "./media/slider/img07.webp", "./media/slider/img05.webp"],
         },
         {
             name: "Urban IoT Integration",
             description: "Transforming cities into smart ecosystems. ",
-            images: ["./media/img01.webp", "./media/img05.webp", "./media/img02.webp"],
+            images: ["./media/slider/irrigation.webp", "./media/slider/mechanism.webp"],
         },
     ];
 
@@ -92,20 +95,20 @@ const Projects = () => {
                 ref.current,
                 { textContent: start },
                 {
-                  textContent: end,
-                  duration: 2,
-                  ease: 'power1.out',
-                  snap: { textContent: 1 },
-                  onUpdate: function () {
-                    ref.current.innerHTML = Math.round(ref.current.textContent) + ' +';
-                  },
-                  scrollTrigger: {
-                    trigger: counterSectionRef.current,
-                    start: 'top 70%', // Trigger at 70% from the top
-                    toggleActions: 'play none none none', // Start the animation only once
-                  },
+                    textContent: end,
+                    duration: 2,
+                    ease: 'power1.out',
+                    snap: { textContent: 1 },
+                    onUpdate: function () {
+                        ref.current.innerHTML = Math.round(ref.current.textContent) + ' +';
+                    },
+                    scrollTrigger: {
+                        trigger: counterSectionRef.current,
+                        start: 'top 70%', // Trigger at 70% from the top
+                        toggleActions: 'play none none none', // Start the animation only once
+                    },
                 }
-              );
+            );
         };
 
         // Animate each counter
@@ -196,20 +199,88 @@ const Projects = () => {
                 </div>
             )}
 
-            <div className="counter-container" ref={counterSectionRef}>
-                <div className="counter-item">
-                    <h3 ref={projectsRef}>0</h3>
-                    <p>Smart Home Projects</p>
+            <section className="scope-of-work-section" style={{ backgroundColor: "transparent", color: "var(--black)" }}>
+                <h2 className="scope-of-work-title">Scope of Work</h2>
+                <div className="scope-of-work-grid">
+                    <div className="scope-of-work-col">
+                        <div className="scope-of-work-item">
+                            <span className="scope-icon"><FiCpu /></span>
+                            <span>R&amp;D in technology</span>
+                        </div>
+                        <div className="scope-of-work-item">
+                            <span className="scope-icon"><FiSettings /></span>
+                            <span>Customized automation systems</span>
+                        </div>
+                        <div className="scope-of-work-item">
+                            <span className="scope-icon"><MdApartment /></span>
+                            <span>Smart buildings</span>
+                        </div>
+                        <div className="scope-of-work-item">
+                            <span className="scope-icon"><FiShield /></span>
+                            <span>Security &amp; surveillance solutions</span>
+                        </div>
+                    </div>
+                    <div className="scope-of-work-col">
+                        <div className="scope-of-work-item">
+                            <span className="scope-icon"><MdChair /></span>
+                            <span>Interactive furniture</span>
+                        </div>
+                        <div className="scope-of-work-item">
+                            <span className="scope-icon"><MdLandscape /></span>
+                            <span>Smart landscape</span>
+                        </div>
+                        <div className="scope-of-work-item">
+                            <span className="scope-icon"><MdBuild /></span>
+                            <span>Customized mechanisms</span>
+                        </div>
+                        <div className="scope-of-work-item">
+                            <span className="scope-icon"><FiSmartphone /></span>
+                            <span>App development</span>
+                        </div>
+                    </div>
                 </div>
-                <div className="counter-item">
-                    <h3 ref={staffRef}> 0</h3>
-                    <p>Custom Built Systems</p>
+
+                <div className="counter-container" ref={counterSectionRef}>
+                    <div className="counter-item">
+                        <h3 ref={projectsRef}>0</h3>
+                        <p>Smart Home Projects</p>
+                    </div>
+                    <div className="counter-item">
+                        <h3 ref={staffRef}> 0</h3>
+                        <p>Custom Built Systems</p>
+                    </div>
+                    <div className="counter-item">
+                        <h3 ref={yearsRef}>0</h3>
+                        <p>App Development</p>
+                    </div>
                 </div>
-                <div className="counter-item">
-                    <h3 ref={yearsRef}>0</h3>
-                    <p>App Development</p>
+
+                <h2 className="products-services-title">Products &amp; Services</h2>
+                <div className="products-services-grid">
+                    <div className="products-services-col">
+                        <div className="products-services-item"><span className="products-icon"><MdHome /></span>Home automation systems</div>
+                        <div className="products-services-item"><span className="products-icon"><MdOutlineLightbulb /></span>Smart mirrors</div>
+                        <div className="products-services-item"><span className="products-icon"><MdDesk /></span>Smart desks</div>
+                        <div className="products-services-item"><span className="products-icon"><MdDoorSliding /></span>Smart doors</div>
+                        <div className="products-services-item"><span className="products-icon"><MdTouchApp /></span>Access control</div>
+                    </div>
+                    <div className="products-services-col">
+                        <div className="products-services-item"><span className="products-icon"><GiTurnstile /></span>Turnstile gates</div>
+                        <div className="products-services-item"><span className="products-icon"><MdTv /></span>TV mechanism</div>
+                        <div className="products-services-item"><span className="products-icon"><MdOutlineVideocam /></span>Projector mechanism</div>
+                        <div className="products-services-item"><span className="products-icon"><GiSprout /></span>Irrigation systems</div>
+                        <div className="products-services-item"><span className="products-icon"><MdVolumeUp /></span>Sound system control</div>
+                    </div>
+                    <div className="products-services-col">
+                        <div className="products-services-item"><span className="products-icon"><MdOutlineLightbulb /></span>Software solutions</div>
+                        <div className="products-services-item"><span className="products-icon"><MdPhoneIphone /></span>Mobile app development</div>
+                        <div className="products-services-item"><span className="products-icon"><FiSettings /></span>Customized systems</div>
+                        <div className="products-services-item"><span className="products-icon"><MdOutlineSecurity /></span>Surveillance &amp; security</div>
+                        <div className="products-services-item"><span className="products-icon"><MdEventSeat /></span>Customized interactive furniture</div>
+                    </div>
                 </div>
-            </div>
+            </section>
+
 
             <Contact />
         </div>

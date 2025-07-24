@@ -734,7 +734,7 @@ footer input[type=submit] {
 .projects-page {
   text-align: center;
   margin: 120px 0;
-  margin-bottom: 80px;
+  margin-bottom: 20px;
 }
 
 .projects-grid {
@@ -1585,15 +1585,10 @@ a {
     width: auto;
   }
 
-  .slideshow-container02 {
-    width: 90vw !important;
-    height: auto !important;
+  .btn01, .btn, button, a.btn01, a.btn{
+    min-width: 36px;
+    min-height: 36px;
   }
-
-  .slide02 {
-    height: auto !important;
-  }
-
   .prev-btn02,
   .next-btn02 {
     scale: 0.8;

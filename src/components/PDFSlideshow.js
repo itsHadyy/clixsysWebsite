@@ -1,39 +1,94 @@
-import React, { useState, useEffect } from "react";
-import { gsap } from "gsap";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import "./slideshow02.css";
 
 const slides = [];
 
-for (let i = 1; i <= 32; i++) {
+for (let i = 1; i <= 31; i++) {
     const slideNumber = String(i).padStart(2, '0'); // Pad with leading zero
-    const imagePath = `./media/slides/slide${slideNumber}.webp`;
+    const imagePath = `/media/slides/slide${slideNumber.toString().padStart(2, '0')}.webp`;
     slides.push(imagePath);
 }
 
 const PDFSlideshow = () => {
-    const [currentSlide, setCurrentSlide] = useState(0);
+    const [current, setCurrent] = useState(0);
+    const [next, setNext] = useState(null); // index of next slide
+    const [direction, setDirection] = useState(1); // 1 for next, -1 for prev
+    const [isAnimating, setIsAnimating] = useState(false);
+    const [isPaused, setIsPaused] = useState(false);
+    const timeoutRef = useRef();
+    const autoFlipRef = useRef();
 
+    // Slide change handler (memoized)
+    const handleSlide = useCallback((targetIdx, dir) => {
+        if (isAnimating || targetIdx === current) return;
+        setDirection(dir);
+        setNext(targetIdx);
+        setIsAnimating(true);
+        // Animation duration must match CSS
+        timeoutRef.current = setTimeout(() => {
+            setCurrent(targetIdx);
+            setNext(null);
+            setIsAnimating(false);
+        }, 800); // match CSS .slide02-img.animate duration
+    }, [isAnimating, current]);
+
+    // Auto-flip every 5s unless paused or animating
     useEffect(() => {
-        gsap.fromTo(".slide02", { opacity: 0 }, { opacity: 1, duration: 0.8 });
-    }, [currentSlide]);
+        if (!isPaused && !isAnimating) {
+            autoFlipRef.current = setTimeout(() => {
+                handleSlide(current === slides.length - 1 ? 0 : current + 1, 1);
+            }, 5000);
+        }
+        return () => clearTimeout(autoFlipRef.current);
+    }, [isPaused, isAnimating, current, handleSlide]);
 
-    const nextSlide = () => {
-        setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
+    // Pause on user interaction
+    const handleUserInteract = () => {
+        setIsPaused(true);
+        clearTimeout(autoFlipRef.current);
     };
 
-    const prevSlide = () => {
-        setCurrentSlide((prevSlide) =>
-            prevSlide === 0 ? slides.length - 1 : prevSlide - 1
-        );
-    };
+    // Clean up
+    useEffect(() => () => clearTimeout(timeoutRef.current), []);
+
+    // Indices for prev/next
+    const prevIdx = current === 0 ? slides.length - 1 : current - 1;
+    const nextIdx = current === slides.length - 1 ? 0 : current + 1;
 
     return (
-        <div className="slideshow-container02">
-            <img src={slides[currentSlide]} alt="Slide02" className="slide02" loading="lazy" />
-            <button className="prev-btn02" onClick={prevSlide}>
+        <div className="slideshow-container02" onMouseEnter={handleUserInteract} onTouchStart={handleUserInteract}>
+            <div className="slide02-wrapper" style={{ position: 'relative', width: '100%', height: '100%' }}>
+                {/* Current image */}
+                <img
+                    src={slides[current]}
+                    alt="Slide02"
+                    className={`slide02-img${isAnimating && next !== null ? (direction === 1 ? ' animate-left-out' : ' animate-right-out') : ''}`}
+                    style={{ zIndex: 1 }}
+                    loading="lazy"
+                />
+                {/* Next image (only during animation) */}
+                {isAnimating && next !== null && (
+                    <img
+                        src={slides[next]}
+                        alt="Slide02"
+                        className={`slide02-img${direction === 1 ? ' animate-left-in' : ' animate-right-in'}`}
+                        style={{ zIndex: 2, position: 'absolute', top: 0, left: 0 }}
+                        loading="lazy"
+                    />
+                )}
+            </div>
+            <button
+                className="prev-btn02"
+                onClick={() => { handleSlide(prevIdx, -1); handleUserInteract(); }}
+                disabled={isAnimating}
+            >
                 ‹
             </button>
-            <button className="next-btn02" onClick={nextSlide}>
+            <button
+                className="next-btn02"
+                onClick={() => { handleSlide(nextIdx, 1); handleUserInteract(); }}
+                disabled={isAnimating}
+            >
                 ›
             </button>
         </div>

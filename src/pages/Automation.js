@@ -44,7 +44,7 @@ const serviceData = [
     desc: "Height-adjustable smart desks with memory presets, occupancy sensors, and health analytics. Our desks connect to mobile apps for personalized ergonomics and usage tracking, enhancing workplace productivity."
   },
   {
-    img: "./media/slider/lightning.webp",
+    img: "./media/slider/lighting.webp",
     title: "Lighting Control",
     desc: "Intelligent lighting systems with dimming, color tuning, and occupancy-based automation. Our platform supports DALI, Zigbee, and Wi-Fi protocols, offering energy monitoring and remote management."
   },
