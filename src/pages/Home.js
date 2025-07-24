@@ -16,6 +16,10 @@ import { Link as ScrollLink } from "react-scroll";
 
 function Home() {
   const counterRef = useRef();
+  const [videoLoaded, setVideoLoaded] = React.useState(false);
+  const handleVideoLoaded = () => setVideoLoaded(true);
+  const handleVideoError = () => setVideoLoaded(false);
+
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
@@ -126,11 +130,43 @@ function Home() {
 
   return (
     <div>
-      <div className="hero">
-        <video className="heroVideo" autoPlay muted loop playsInline poster="./media/slider/img01.webp">
+      <div className="hero" style={{ position: 'relative' }}>
+        <video
+          className="heroVideo"
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="./media/slider/img01.webp"
+          onCanPlayThrough={handleVideoLoaded}
+          onError={handleVideoError}
+        >
           <source src="./VideoTeaser.mp4" type="video/mp4" />
           Your browser does not support the videos.
         </video>
+        {!videoLoaded && (
+          <div
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              background: 'var(--black)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              zIndex: 2,
+              transition: 'opacity 0.5s',
+            }}
+          >
+            <img
+              src={'/logo02.jpg'}
+              alt="Clixsys Logo"
+              style={{ maxWidth: '60%', maxHeight: '60%' }}
+            />
+          </div>
+        )}
         <div className="scrollText">
           <p>
             Scroll down to learn more about our services <br></br>
