@@ -29,7 +29,7 @@ const PDFSlideshow = () => {
             setCurrent(targetIdx);
             setNext(null);
             setIsAnimating(false);
-        }, 800); // match CSS .slide02-img.animate duration
+        }, 800); 
     }, [isAnimating, current]);
 
     // Auto-flip every 5s unless paused or animating
