@@ -15,22 +15,22 @@ const Projects = () => {
     const projects = [
         {
             name: "Smart Home Automation",
-            description: "Integrated systems redefining the modern home.",
+            description: "Comprehensive IoT-based home automation systems that seamlessly integrate lighting, climate control, security, and entertainment. Our solutions provide intelligent monitoring, energy optimization, and remote control capabilities, transforming ordinary homes into connected, efficient living spaces that adapt to your lifestyle.",
             images: ["./media/slider/ac.webp", "./media/slider/curtain.webp", "./media/slider/access.webp"],
         },
         {
             name: "Energy Efficiency Solutions",
-            description: "Optimizing energy for a sustainable future.",
+            description: "Advanced energy management systems that monitor, analyze, and optimize power consumption across residential and commercial environments. Our smart solutions include automated lighting controls, HVAC optimization, and real-time energy analytics, delivering up to 40% reduction in energy costs while maintaining optimal comfort levels.",
             images: ["./media/slider/lighting.webp", "./media/slider/smartDesk.webp"],
         },
         {
             name: "Intelligent Office Spaces",
-            description: "Creating workplaces of tomorrow.",
+            description: "Next-generation workplace automation that enhances productivity, collaboration, and employee well-being. Our intelligent office solutions include smart meeting rooms, automated climate control, occupancy monitoring, and integrated communication systems, creating dynamic work environments that adapt to modern business needs.",
             images: ["./media/slider/img03.webp", "./media/slider/img07.webp", "./media/slider/img05.webp"],
         },
         {
             name: "Urban IoT Integration",
-            description: "Transforming cities into smart ecosystems. ",
+            description: "Comprehensive smart city infrastructure solutions that connect urban systems for enhanced efficiency and sustainability. Our IoT platforms integrate traffic management, environmental monitoring, public services, and infrastructure maintenance, creating intelligent urban ecosystems that improve quality of life and operational efficiency.",
             images: ["./media/slider/irrigation.webp", "./media/slider/mechanism.webp"],
         },
     ];

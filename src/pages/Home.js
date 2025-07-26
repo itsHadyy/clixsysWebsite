@@ -162,8 +162,13 @@ function Home() {
           >
             <img
               src={'/logo02.jpg'}
+              srcSet="/logo02-300.jpg 300w, /logo02-600.jpg 600w, /logo02.jpg 1200w"
+              sizes="(max-width: 768px) 300px, 600px"
               alt="Clixsys Logo"
               style={{ maxWidth: '60%', maxHeight: '60%' }}
+              width="810"
+              height="493"
+              loading="eager"
             />
           </div>
         )}

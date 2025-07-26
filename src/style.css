@@ -249,9 +249,34 @@ hr {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f3f3f3", endColorstr="#f3f3f3", GradientType=1);
 }
 
+/* Reserve space for footer to prevent layout shift */
 footer {
+  min-height: 120px;
+  box-sizing: border-box;
   padding: 20px 60px;
   margin-top: 60px;
+  width: 100%;
+}
+
+/* Reserve space for .social icons and text */
+.social {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.social svg {
+  width: 32px;
+  height: 32px;
+  display: block;
+}
+
+.social p {
+  margin: 0 0 0 16px;
+  font-size: 1rem;
+  line-height: 1.5;
+  white-space: nowrap;
 }
 
 .footer-container {
@@ -1416,8 +1441,8 @@ a {
   }
 
   footer {
+    min-height: 100px;
     padding: 20px;
-    margin-top: 0;
   }
 
   .footer-container {
@@ -1651,4 +1676,51 @@ a {
 
 .about-counter-container p {
   color: var(--silver02);
+}
+
+/* Modern Spinner Styles */
+.spinner-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255,255,255,0.85);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s cubic-bezier(.4,0,.2,1);
+}
+.spinner-show {
+  opacity: 1;
+  pointer-events: auto;
+}
+.spinner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+.spinner-circle {
+  width: 64px;
+  height: 64px;
+  border: 6px solid #e2e2e2;
+  border-top: 6px solid #efcb03;
+  border-radius: 50%;
+  animation: spinner-rotate 1s linear infinite;
+  box-shadow: 0 4px 24px rgba(239,203,3,0.15);
+}
+@keyframes spinner-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.spinner-text {
+  font-size: 1.2rem;
+  color: #191919;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  font-family: var(--font01);
+  text-shadow: 0 2px 8px #fff;
 }
