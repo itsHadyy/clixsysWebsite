@@ -129,15 +129,15 @@ Features25.defaultProps = {
   feature3Description: undefined,
   feature3Title: undefined,
   feature3ImgSrc:
-    './media/img05.jpeg',
+    '/media/img05.jpeg',
   feature1ImgSrc:
-    './media/img06.jpeg',
+    '/media/img06.jpeg',
   feature2Description: undefined,
   feature1Title: undefined,
   feature3ImgAlt: 'Interactive Tools Image',
   feature1Description: undefined,
   feature2ImgSrc:
-    './media/img04.jpeg',
+    '/media/img04.jpeg',
   feature2ImgAlt: 'Product Customization Image',
   feature2Title: undefined,
 }

@@ -137,7 +137,7 @@ function Home() {
           muted
           loop
           playsInline
-          poster="./media/slider/img01.webp"
+          poster="/media/slider/img01.webp"
           onCanPlayThrough={handleVideoLoaded}
           onError={handleVideoError}
         >
@@ -206,9 +206,9 @@ function Home() {
           feature1Title={<span className="home-text121">Automation Systems</span>}
           feature1Description={<span className="home-text122">Discover our cutting-edge automation systems that make your life easier and more efficient.</span>}
           feature2Title={<span className="home-text123">Product Customization Features</span>}
-          feature1ImgSrc={'./media/slider/mechanism.webp'}
-          feature2ImgSrc={'./media/slider/smartMirror.webp'}
-          feature3ImgSrc={'./media/slider/ac.webp'}
+          feature1ImgSrc={'/media/slider/mechanism.webp'}
+          feature2ImgSrc={'/media/slider/smartMirror.webp'}
+          feature3ImgSrc={'/media/slider/ac.webp'}
         ></Features24>
 
         <CTA26
