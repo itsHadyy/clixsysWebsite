@@ -5,7 +5,7 @@ const slides = [];
 
 for (let i = 1; i <= 31; i++) {
     const slideNumber = String(i).padStart(2, '0'); // Pad with leading zero
-    const imagePath = `/media/slides/slide${slideNumber.toString().padStart(2, '0')}.webp`;
+    const imagePath = `/media/slide${slideNumber.toString().padStart(2, '0')}.webp`;
     slides.push(imagePath);
 }
 

@@ -8,38 +8,38 @@ const Slideshow = ({ direction = "left" }) => {
   // Array of image paths with responsive variants
   const images = [
     {
-      src: "/media/slider/img01.webp",
-      srcSet: "/media/slider/img01-300.webp 300w, /media/slider/img01-600.webp 600w, /media/slider/img01.webp 1200w",
+      src: "/media/img01.webp",
+      srcSet: "/media/img01-300.webp 300w, /media/img01-600.webp 600w, /media/img01.webp 1200w",
       sizes: "(max-width: 768px) 300px, 600px"
     },
     {
-      src: "/media/slider/img02.webp",
-      srcSet: "/media/slider/img02-300.webp 300w, /media/slider/img02-600.webp 600w, /media/slider/img02.webp 1200w",
+      src: "/media/img02.webp",
+      srcSet: "/media/img02-300.webp 300w, /media/img02-600.webp 600w, /media/img02.webp 1200w",
       sizes: "(max-width: 768px) 300px, 600px"
     },
     {
-      src: "/media/slider/img03.webp",
-      srcSet: "/media/slider/img03-300.webp 300w, /media/slider/img03-600.webp 600w, /media/slider/img03.webp 1200w",
+      src: "/media/img03.webp",
+      srcSet: "/media/img03-300.webp 300w, /media/img03-600.webp 600w, /media/img03.webp 1200w",
       sizes: "(max-width: 768px) 300px, 600px"
     },
     {
-      src: "/media/slider/img04.webp",
-      srcSet: "/media/slider/img04-300.webp 300w, /media/slider/img04-600.webp 600w, /media/slider/img04.webp 1200w",
+      src: "/media/img04.webp",
+      srcSet: "/media/img04-300.webp 300w, /media/img04-600.webp 600w, /media/img04.webp 1200w",
       sizes: "(max-width: 768px) 300px, 600px"
     },
     {
-      src: "/media/slider/img05.webp",
-      srcSet: "/media/slider/img05-300.webp 300w, /media/slider/img05-600.webp 600w, /media/slider/img05.webp 1200w",
+      src: "/media/img05.webp",
+      srcSet: "/media/img05-300.webp 300w, /media/img05-600.webp 600w, /media/img05.webp 1200w",
       sizes: "(max-width: 768px) 300px, 600px"
     },
     {
-      src: "/media/slider/img06.webp",
-      srcSet: "/media/slider/img06-300.webp 300w, /media/slider/img06-600.webp 600w, /media/slider/img06.webp 1200w",
+      src: "/media/img06.webp",
+      srcSet: "/media/img06-300.webp 300w, /media/img06-600.webp 600w, /media/img06.webp 1200w",
       sizes: "(max-width: 768px) 300px, 600px"
     },
     {
-      src: "/media/slider/img07.webp",
-      srcSet: "/media/slider/img07-300.webp 300w, /media/slider/img07-600.webp 600w, /media/slider/img07.webp 1200w",
+      src: "/media/img07.webp",
+      srcSet: "/media/img07-300.webp 300w, /media/img07-600.webp 600w, /media/img07.webp 1200w",
       sizes: "(max-width: 768px) 300px, 600px"
     },
   ];
