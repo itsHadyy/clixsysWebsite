@@ -36,17 +36,17 @@ function App() {
       <ScrollToTop />
       <Navbar />
       <Suspense fallback={<Spinner show={true} />}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<ContactP />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/quote" element={<Quote />} />
-          <Route path="/automation" element={<Automation />} />
-          <Route path="/smart" element={<Smart />} />
-          <Route path="/software" element={<Software />} />
-        </Routes>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<ContactP />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/quote" element={<Quote />} />
+        <Route path="/automation" element={<Automation />} />
+        <Route path="/smart" element={<Smart />} />
+        <Route path="/software" element={<Software />} />
+      </Routes>
       </Suspense>
       <Footer />
     </Router>

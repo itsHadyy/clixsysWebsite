@@ -443,7 +443,7 @@ footer input[type=submit] {
 }
 
 .cta26-container2:hover button,
-.cta26-container2:hover p,
+.cta26-container2:hover p, 
 .cta26-container2:hover a {
   color: var(--white) !important;
 }

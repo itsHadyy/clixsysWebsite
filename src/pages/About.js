@@ -272,7 +272,7 @@ function About() {
                                 <img
                                     src={member.image}
                                     alt={member.name}
-                                    onError={(e) => (e.target.src = "/media/default-avatar.jpg")}
+                                    onError={(e) => (e.target.src = "./media/default-avatar.jpg")}
                                     loading="lazy"
                                 />
                                 <h3>{member.name}</h3>
@@ -319,7 +319,7 @@ function About() {
                         Our aim is to let people live and enjoy their daily life with a unique touch from the future.
                     </p>
                     <p>Sincerely,</p>
-                    <img src='/hf.webp' alt="Logo" className="hk" loading="lazy" />
+                    <img src='./hf.webp' alt="Logo" className="hk" loading="lazy" />
                 </div>
             </div>
         </div >
