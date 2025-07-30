@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Test Page</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .image-test { margin: 20px 0; padding: 10px; border: 1px solid #ccc; }
+        .image-test img { max-width: 200px; max-height: 200px; margin: 10px; }
+        .success { background-color: #d4edda; border-color: #c3e6cb; }
+        .error { background-color: #f8d7da; border-color: #f5c6cb; }
+    </style>
+</head>
+<body>
+    <h1>Image Accessibility Test</h1>
+    <p>This page tests if all images are accessible on your server.</p>
+    
+    <div id="results"></div>
+
+    <script>
+        const images = [
+            '/media/img01.webp',
+            '/media/img02.webp',
+            '/media/img03.webp',
+            '/media/img04.webp',
+            '/media/img05.webp',
+            '/media/img06.webp',
+            '/media/img07.webp',
+            '/media/slide01.webp',
+            '/media/slide02.webp',
+            '/media/slide03.webp',
+            '/media/slide04.webp',
+            '/media/slide05.webp',
+            '/media/ac.webp',
+            '/media/access.webp',
+            '/media/curtain.webp',
+            '/media/irrigation.webp',
+            '/media/lighting.webp',
+            '/media/mechanism.webp',
+            '/media/smartDesk.webp',
+            '/media/smartMirror.webp',
+            '/media/tvControl.webp',
+            '/media/turnstile.webp'
+        ];
+
+        const resultsDiv = document.getElementById('results');
+        let successCount = 0;
+        let errorCount = 0;
+
+        images.forEach((imagePath, index) => {
+            const testDiv = document.createElement('div');
+            testDiv.className = 'image-test';
+            testDiv.innerHTML = `
+                <h3>Test ${index + 1}: ${imagePath}</h3>
+                <img src="${imagePath}" alt="Test image ${index + 1}" 
+                     onload="markSuccess(this, '${imagePath}')" 
+                     onerror="markError(this, '${imagePath}')">
+                <p id="status-${index}">Loading...</p>
+            `;
+            resultsDiv.appendChild(testDiv);
+        });
+
+        function markSuccess(img, path) {
+            img.parentElement.classList.add('success');
+            img.parentElement.querySelector('p').textContent = '✅ SUCCESS: Image loaded successfully';
+            successCount++;
+            updateSummary();
+        }
+
+        function markError(img, path) {
+            img.parentElement.classList.add('error');
+            img.parentElement.querySelector('p').textContent = '❌ ERROR: Image failed to load';
+            errorCount++;
+            updateSummary();
+        }
+
+        function updateSummary() {
+            const summary = document.createElement('div');
+            summary.style.cssText = 'position: fixed; top: 10px; right: 10px; background: #333; color: white; padding: 10px; border-radius: 5px;';
+            summary.innerHTML = `
+                <strong>Test Results:</strong><br>
+                ✅ Success: ${successCount}<br>
+                ❌ Errors: ${errorCount}<br>
+                📊 Total: ${successCount + errorCount}/${images.length}
+            `;
+            document.body.appendChild(summary);
+        }
+    </script>
+</body>
+</html> 

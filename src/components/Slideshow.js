@@ -8,38 +8,31 @@ const Slideshow = ({ direction = "left" }) => {
   // Array of image paths with responsive variants
   const images = [
     {
-      src: "/media/img01.webp",
-      srcSet: "/media/img01-300.webp 300w, /media/img01-600.webp 600w, /media/img01.webp 1200w",
+      src: "/media/img01.png",
       sizes: "(max-width: 768px) 300px, 600px"
     },
     {
-      src: "/media/img02.webp",
-      srcSet: "/media/img02-300.webp 300w, /media/img02-600.webp 600w, /media/img02.webp 1200w",
+      src: "/media/img02.png",
       sizes: "(max-width: 768px) 300px, 600px"
     },
     {
-      src: "/media/img03.webp",
-      srcSet: "/media/img03-300.webp 300w, /media/img03-600.webp 600w, /media/img03.webp 1200w",
+      src: "/media/img03.png",
       sizes: "(max-width: 768px) 300px, 600px"
     },
     {
-      src: "/media/img04.webp",
-      srcSet: "/media/img04-300.webp 300w, /media/img04-600.webp 600w, /media/img04.webp 1200w",
+      src: "/media/img04.png",
       sizes: "(max-width: 768px) 300px, 600px"
     },
     {
-      src: "/media/img05.webp",
-      srcSet: "/media/img05-300.webp 300w, /media/img05-600.webp 600w, /media/img05.webp 1200w",
+      src: "/media/img05.png",
       sizes: "(max-width: 768px) 300px, 600px"
     },
     {
-      src: "/media/img06.webp",
-      srcSet: "/media/img06-300.webp 300w, /media/img06-600.webp 600w, /media/img06.webp 1200w",
+      src: "/media/img06.png",
       sizes: "(max-width: 768px) 300px, 600px"
     },
     {
-      src: "/media/img07.webp",
-      srcSet: "/media/img07-300.webp 300w, /media/img07-600.webp 600w, /media/img07.webp 1200w",
+      src: "/media/img07.png",
       sizes: "(max-width: 768px) 300px, 600px"
     },
   ];
@@ -87,7 +80,6 @@ const Slideshow = ({ direction = "left" }) => {
           <img 
             key={index} 
             src={image.src} 
-            srcSet={image.srcSet}
             sizes={image.sizes}
             alt={`Slide ${index + 1}`} 
             loading="lazy"
