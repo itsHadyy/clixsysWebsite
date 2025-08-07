@@ -78,28 +78,28 @@ function About() {
         {
             name: "Omar Sabbour",
             title: "Co-Founder",
-            image: "/media/omar_sabbour.webp",
+            image: "./omar_sabbour.webp",
             description:
                 "Omar Sabbour graduated from the American University in Cairo with a Bachelors’ degree in Construction Engineering. He then joined the family business that is a well-known pillar in the field of construction and real estate development. Chief Executive Officer of Sabbour Consulting, one of the largest Engineering Consulting firms in Egypt with over 60 years’ experience. An active member of the Egyptian business community, Omar Sabbour was the Chairman of the Egyptian Junior Business Association 2011 to 2013 and a member of the Egyptian Businessmen Association (EBA), the British Egyptian Business Association (BEBA) and the Egyptian German Chamber of Commerce.",
         },
         {
             name: "Hesham Fahmy",
             title: "Co-Founder & CEO",
-            image: "/media/hesham_fahmy.webp",
+            image: "./hesham_fahmy.webp",
             description:
                 "Graduated from AAST with Bachelor’s degree in Electronics and Communications, Excellent with honor overall grade. He started his academic career as a Teacher Assistant in Smart Village campus and got his Master’s degree in 2016 and undergoing PhD degree in UCM Madrid, Spain. After Finishing Master’s degree his passion for smart systems design and implementation and his vision to make an Egyptian brand that can compete with the big tech. companies made him start working on the system right away choosing Hesham Tarek and Omar Alaa securing the technical development for their extensive know how. In June 2021 and with the joining of Eng. Ahmed Sabbour and Eng. Omar Sabbour as co-founders completing the big picture, the company was up and running with Hesham Fahmy as the CEO.",
         },
         {
             name: "Hesham Tarek",
             title: "Co-Founder & CTO Software",
-            image: "/media/hesham_tarek.webp",
+            image: "./hesham_tarek.webp",
             description:
                 "Graduated from AAST with Bachelor’s degree in Electronics and Communications, not only Excellent with Honor grade, he got the highest score in the department being the first upon his colleagues. He started his academic career and Master’s degree right after he graduated as a Teacher Assistant. Hesham is the one when tech. software issues are discussed in front of him, solutions pop up in no time. Brightness, self-taught experience and market experience gained over the years joining in 2016 in addition to tons of ideas, in addition to being a Co-Founder, made him the best person to be Clixsys, CTO-Software.",
         },
         {
             name: "Omar Alaa",
             title: "CO-FOUNDER & CTO HARDWARE",
-            image: "/media/omar_alaa.webp",
+            image: "./omar_alaa.webp",
             description:
                 "Graduated from AAST, with Bachelor’s degree in Electronics and Communications, Omar was not only good at hardware design, he also is the one to ask in robotics and motors. With his extensive knowledge which was gained through his long term self-taught experience, was picked to take care of the Hardware and mechanisms design as a Co-Founder. June 2021 and with being the person having the solutions of complicated issues it was the time to be Clixsys, CTO-Hardware.",
         },
@@ -272,7 +272,7 @@ function About() {
                                 <img
                                     src={member.image}
                                     alt={member.name}
-                                    onError={(e) => (e.target.src = "./media/default-avatar.jpg")}
+                                    onError={(e) => (e.target.src = "../default-avatar.jpg")}
                                     loading="lazy"
                                 />
                                 <h3>{member.name}</h3>

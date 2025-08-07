@@ -8,31 +8,31 @@ const Slideshow = ({ direction = "left" }) => {
   // Array of image paths with responsive variants
   const images = [
     {
-      src: "/media/img01.png",
+      src: "./img01.webp",
       sizes: "(max-width: 768px) 300px, 600px"
     },
     {
-      src: "/media/img02.png",
+      src: "./img02.webp",
       sizes: "(max-width: 768px) 300px, 600px"
     },
     {
-      src: "/media/img03.png",
+      src: "./img03.webp",
       sizes: "(max-width: 768px) 300px, 600px"
     },
     {
-      src: "/media/img04.png",
+      src: "./img04.webp",
       sizes: "(max-width: 768px) 300px, 600px"
     },
     {
-      src: "/media/img05.png",
+      src: "./img05.webp",
       sizes: "(max-width: 768px) 300px, 600px"
     },
     {
-      src: "/media/img06.png",
+      src: "./img06.webp",
       sizes: "(max-width: 768px) 300px, 600px"
     },
     {
-      src: "/media/img07.png",
+      src: "./img07.webp",
       sizes: "(max-width: 768px) 300px, 600px"
     },
   ];

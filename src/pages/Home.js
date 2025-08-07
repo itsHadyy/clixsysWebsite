@@ -137,7 +137,7 @@ function Home() {
           muted
           loop
           playsInline
-          poster="/media/img01.webp"
+          poster="./img01.webp"
           onCanPlayThrough={handleVideoLoaded}
           onError={handleVideoError}
         >
@@ -206,9 +206,9 @@ function Home() {
           feature1Title={<span className="home-text121">Automation Systems</span>}
           feature1Description={<span className="home-text122">Discover our cutting-edge automation systems that make your life easier and more efficient.</span>}
           feature2Title={<span className="home-text123">Product Customization Features</span>}
-          feature1ImgSrc={'/media/mechanism.webp'}
-          feature2ImgSrc={'/media/smartMirror.webp'}
-          feature3ImgSrc={'/media/ac.webp'}
+          feature1ImgSrc={'./mechanism.webp'}
+          feature2ImgSrc={'./smartMirror.webp'}
+          feature3ImgSrc={'./ac.webp'}
         ></Features24>
 
         <CTA26
@@ -229,13 +229,13 @@ function Home() {
         <Features25
           feature3Description={<span className="home-text118">Revolutionize the way you host your visitors with cutting-edge interactive technology. Browse the cafeteria menu and place your order effortlessly, all from the table. A smart and stylish way to impress your visitors while redefining convenience.</span>}
           feature3Title={<span className="home-text119">DigiServe</span>}
-          feature3ImgSrc={"/media/img03.webp"}
+          feature3ImgSrc={"./img03.webp"}
           feature2Description={<span className="home-text120">Transform your meetings into unforgettable experiences! With cutting-edge technology at your fingertips, effortlessely control lighing, curtains, presentations, and so much more. A true blend of sophistication and innovation to impress every visitor.</span>}
           feature2Title={<span className="home-text123">DesQ</span>}
-          feature2ImgSrc={"/media/img02.webp"}
+          feature2ImgSrc={"./img02.webp"}
           feature1Description={<span className="home-text122">Redefine your space with smart motorized solutions for TVs and projectors. Effortlessely conceal or reveal your devices with precision movements, unlocking creative ways to make the most of your space.</span>}
           feature1Title={<span className="home-text121">Elev8</span>}
-          feature1ImgSrc={"/media/img04.webp"}
+          feature1ImgSrc={"./img04.webp"}
         ></Features25> 
 
         <Contact />
