@@ -14,7 +14,8 @@ const Projects = lazy(() => import('./pages/Projects'));
 const Automation = lazy(() => import('./pages/Automation'));
 const Smart = lazy(() => import('./pages/Smart'));
 const Software = lazy(() => import('./pages/Software'));
-
+const Mirrors = lazy(() => import('./pages/Mirrors'));
+const MirrorQuote = lazy( () => import('./pages/MirrorQuote'))
 function LoadingHandler({ setLoading }) {
   const location = useLocation();
   useEffect(() => {
@@ -46,6 +47,8 @@ function App() {
         <Route path="/automation" element={<Automation />} />
         <Route path="/smart" element={<Smart />} />
         <Route path="/software" element={<Software />} />
+        <Route path="/mirrors" element={<Mirrors />} />
+        <Route path="/mirror-quote" element={<MirrorQuote />} />
       </Routes>
       </Suspense>
       <Footer />

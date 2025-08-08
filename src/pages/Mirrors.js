@@ -1,0 +1,227 @@
+// File: src/pages/SmartMirrors.jsx
+
+import React, { useState, useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { MdTouchApp, MdOutlineSecurity, MdOutlineLightbulb, MdOutlineWifi } from 'react-icons/md';
+import { useNavigate } from 'react-router-dom';
+
+const SmartMirrors = () => {
+    const navigate = useNavigate();
+    const imageRef = useRef(null);
+    
+    // Calculate initial scale based on the largest mirror option
+    const baseWidth = 200;
+    const baseHeight = 80;
+    
+    const [selectedSize, setSelectedSize] = useState('200*80*10');
+    const [selectedColor, setSelectedColor] = useState('black');
+    const [isTransitioning, setIsTransitioning] = useState(false);
+
+    const mirrorOptions = [
+        { size: '60*40*7', touch: '19-inch', price: 1140, scale: 0.6, dimensions: '60cm × 40cm x 7cm', width: 60, height: 40 },
+        { size: '80*60*7', touch: '19-inch', price: 1370, scale: 0.8, dimensions: '80cm × 60cm x 7cm', width: 80, height: 60 },
+        { size: '80*60*10', touch: '32-inch', price: 1520, scale: 0.8, dimensions: '80cm × 60cm x 10cm', width: 80, height: 60 },
+        { size: '120*60*7', touch: '19-inch', price: 1650, scale: 1.0, dimensions: '120cm × 60cm x 7cm', width: 120, height: 60 },
+        { size: '120*60*10', touch: '32-inch', price: 1800, scale: 1.0, dimensions: '120cm × 60cm x 10cm', width: 120, height: 60 },
+        { size: '160*60*7', touch: '19-inch', price: 1930, scale: 1.2, dimensions: '160cm × 60cm x 7cm', width: 160, height: 60 },
+        { size: '160*60*10', touch: '32-inch', price: 2080, scale: 1.2, dimensions: '160cm × 60cm x 10cm', width: 160, height: 60 },
+        { size: '200*80*7', touch: '19-inch', price: 2210, scale: 1.4, dimensions: '200cm × 80cm x 7cm', width: 200, height: 80 },
+        { size: '200*80*10', touch: '32-inch', price: 2360, scale: 1.4, dimensions: '200cm × 80cm x 10cm', width: 200, height: 80 },
+    ];
+
+    const frameColors = [
+        { name: 'black', label: 'Black', hex: '#191919' },
+        { name: 'gold', label: 'Gold', hex: '#efcb03' },
+        { name: 'silver', label: 'Silver', hex: '#868686' }
+    ];
+
+    const selectedMirror = mirrorOptions.find(option => option.size === selectedSize);
+    const imageName = `${selectedColor}.png`;
+    const imageUrl = `/${imageName}`;
+
+    useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
+        
+        // Animate elements on scroll
+        gsap.fromTo('.mirror-configurator', 
+            { opacity: 0, y: 50 },
+            { opacity: 1, y: 0, duration: 1, scrollTrigger: { trigger: '.mirror-configurator', start: 'top 80%' } }
+        );
+        
+        gsap.fromTo('.mirrors-features-grid', 
+            { opacity: 0, y: 30 },
+            { opacity: 1, y: 0, duration: 0.8, stagger: 0.2, scrollTrigger: { trigger: '.mirrors-features-grid', start: 'top 80%' } }
+        );
+    }, []);
+
+    const handleColorChange = (newColor) => {
+        setSelectedColor(newColor);
+        setIsTransitioning(true);
+        
+        setTimeout(() => {
+            setIsTransitioning(false);
+        }, 300);
+    };
+
+    const handleSizeChange = (newSize) => {
+        const newMirror = mirrorOptions.find(option => option.size === newSize);
+        
+        // Calculate absolute scale based on area ratio
+        const newArea = newMirror.width * newMirror.height;
+        const baseArea = baseWidth * baseHeight;
+        const absoluteScale = newArea / baseArea;
+        
+        setIsTransitioning(true);
+        
+        gsap.to(imageRef.current, {
+            scale: absoluteScale,
+            duration: 0.6,
+            ease: 'power2.out',
+            onComplete: () => {
+                setIsTransitioning(false);
+            }
+        });
+        
+        setSelectedSize(newSize);
+    };
+
+    const handleQuoteRequest = () => {
+        // Navigate to quote page with current selections
+        navigate('/mirror-quote', { 
+            state: { 
+                selectedMirror, 
+                selectedColor,
+                mirrorOptions,
+                frameColors
+            }
+        });
+    };
+
+    return (
+        <div className="mirrors-page">
+            <div className="container">
+                {/* Hero Section */}
+                <div className="mirrors-hero-section">
+                    <h1 className="mirrors-hero-title">Smart Interactive Mirror</h1>
+                    <p className="mirrors-hero-description">
+                        Transform your space with our cutting-edge smart mirrors.
+                        Choose your perfect size and frame color, featuring touch display,
+                        Android system, and intelligent widgets.
+                    </p>
+                </div>
+
+                {/* Mirror Configurator */}
+                <div className="mirror-configurator">
+                    {/* Mirror Display */}
+                    <div className="mirror-image-container">
+                        <img
+                            ref={imageRef}
+                            src={imageUrl}
+                            alt={`Smart Mirror - ${selectedColor}`}
+                            className={`mirror-image ${isTransitioning ? 'transitioning' : ''}`}
+                            onError={(e) => {
+                                e.target.src = '/black.png';
+                            }}
+                        />
+                        
+                        {/* Specs Badge */}
+                        <div className="mirror-specs-badge">
+                            <div className="mirror-specs-dimensions">{selectedMirror.dimensions}</div>
+                            <div className="mirror-specs-touch">{selectedMirror.touch} Touch Display</div>
+                        </div>
+                    </div>
+
+                    {/* Configuration Panel */}
+                    <div className="mirror-config-panel">
+                        {/* Size Selection */}
+                        <div>
+                            <h3 className="mirror-section-title">Choose Size</h3>
+                            <div className="mirror-size-grid">
+                                {mirrorOptions.map((option) => (
+                                    <button
+                                        key={option.size}
+                                        className={`mirror-size-button ${selectedSize === option.size ? 'selected' : ''}`}
+                                        onClick={() => handleSizeChange(option.size)}
+                                    >
+                                        <div className="mirror-size-dimensions">{option.dimensions}</div>
+                                        <div className="mirror-size-touch">{option.touch} Touch Display</div>
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Color Selection */}
+                        <div>
+                            <h3 className="mirror-section-title">Choose Frame Color</h3>
+                            <div className="mirror-color-container">
+                                {frameColors.map((color) => (
+                                    <button
+                                        key={color.name}
+                                        className={`mirror-color-button ${selectedColor === color.name ? 'selected' : ''}`}
+                                        onClick={() => handleColorChange(color.name)}
+                                    >
+                                        <div 
+                                            className="mirror-color-swatch"
+                                            style={{ backgroundColor: color.hex }}
+                                        />
+                                        {color.label}
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Price Display */}
+                        <div className="mirror-price-container">
+                            <div className="mirror-price-label">Total Price</div>
+                            <div className="mirror-price-amount">${selectedMirror.price}</div>
+                            <div className="mirror-price-note">Includes all accessories and installation</div>
+                        </div>
+
+                        {/* CTA Button */}
+                        <button className="mirror-cta-button" onClick={handleQuoteRequest}>
+                            Contact Sales
+                        </button>
+                    </div>
+                </div>
+
+                {/* Features Section */}
+                <div className="mirrors-features-section">
+                    <h2 className="mirrors-features-title">Smart Mirror Features</h2>
+                    <div className="mirrors-features-grid">
+                        <div className="mirror-feature-card">
+                            <MdTouchApp className="mirror-feature-icon" />
+                            <h3 className="mirror-feature-title">Touch Display</h3>
+                            <p className="mirror-feature-description">
+                                Interactive touch screen with responsive controls for seamless user experience
+                            </p>
+                        </div>
+                        <div className="mirror-feature-card">
+                            <MdOutlineWifi className="mirror-feature-icon" />
+                            <h3 className="mirror-feature-title">Android System</h3>
+                            <p className="mirror-feature-description">
+                                Full Android operating system with access to apps and smart home integration
+                            </p>
+                        </div>
+                        <div className="mirror-feature-card">
+                            <MdOutlineLightbulb className="mirror-feature-icon" />
+                            <h3 className="mirror-feature-title">Smart Widgets</h3>
+                            <p className="mirror-feature-description">
+                                Weather, calendar, clock, and customizable widgets for your daily routine
+                            </p>
+                        </div>
+                        <div className="mirror-feature-card">
+                            <MdOutlineSecurity className="mirror-feature-icon" />
+                            <h3 className="mirror-feature-title">Complete Package</h3>
+                            <p className="mirror-feature-description">
+                                Includes all necessary accessories, mounting hardware, and professional installation
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default SmartMirrors;

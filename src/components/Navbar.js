@@ -55,6 +55,7 @@ function Navbar() {
             </ul>
           </li>
           <li><Link to="/Projects" className="animated-link">Projects</Link></li>
+          <li><Link to="/mirrors" className="animated-link">Smart Mirrors</Link></li>
           <li><Link to="/About" className="animated-link">About</Link></li>
         </ul>
       </div>
@@ -77,6 +78,7 @@ function Navbar() {
           <li><Link to="/smart" onClick={() => setIsOpen(false)}>Smart Products</Link></li>
           <li><Link to="/software" onClick={() => setIsOpen(false)}>Software Solutions</Link></li>
           <li><Link to="/projects" onClick={() => setIsOpen(false)}>Projects</Link></li>
+          <li><Link to="/mirrors" onClick={() => setIsOpen(false)}>Smart Mirrors</Link></li>
           <li><Link to="/about" onClick={() => setIsOpen(false)}>About</Link></li>
         </ul>
         <button className="btn01">
