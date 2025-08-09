@@ -3,20 +3,31 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { MdTouchApp, MdOutlineSecurity, MdOutlineLightbulb, MdOutlineWifi } from 'react-icons/md';
-import { useNavigate } from 'react-router-dom';
+import { MdTouchApp, MdOutlineSecurity, MdOutlineLightbulb, MdOutlineWifi, MdExpandMore, MdSend } from 'react-icons/md';
 
 const SmartMirrors = () => {
-    const navigate = useNavigate();
     const imageRef = useRef(null);
-    
+
     // Calculate initial scale based on the largest mirror option
     const baseWidth = 200;
     const baseHeight = 80;
-    
+
     const [selectedSize, setSelectedSize] = useState('200*80*10');
     const [selectedColor, setSelectedColor] = useState('black');
     const [isTransitioning, setIsTransitioning] = useState(false);
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [showQuoteForm, setShowQuoteForm] = useState(false);
+    const [formData, setFormData] = useState({
+        firstName: '',
+        lastName: '',
+        phone: '',
+        email: '',
+        country: '',
+        city: '',
+        productInterest: '',
+        additionalInfo: ''
+    });
+    const quoteFormRef = useRef(null);
 
     const mirrorOptions = [
         { size: '60*40*7', touch: '19-inch', price: 1140, scale: 0.6, dimensions: '60cm × 40cm x 7cm', width: 60, height: 40 },
@@ -42,23 +53,37 @@ const SmartMirrors = () => {
 
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
-        
+
         // Animate elements on scroll
-        gsap.fromTo('.mirror-configurator', 
+        gsap.fromTo('.mirror-configurator',
             { opacity: 0, y: 50 },
             { opacity: 1, y: 0, duration: 1, scrollTrigger: { trigger: '.mirror-configurator', start: 'top 80%' } }
         );
-        
-        gsap.fromTo('.mirrors-features-grid', 
+
+        gsap.fromTo('.mirrors-features-grid',
             { opacity: 0, y: 30 },
             { opacity: 1, y: 0, duration: 0.8, stagger: 0.2, scrollTrigger: { trigger: '.mirrors-features-grid', start: 'top 80%' } }
         );
     }, []);
 
+    // Close dropdown when clicking outside
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (isDropdownOpen && !event.target.closest('.cool-dropdown-container')) {
+                setIsDropdownOpen(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [isDropdownOpen]);
+
     const handleColorChange = (newColor) => {
         setSelectedColor(newColor);
         setIsTransitioning(true);
-        
+
         setTimeout(() => {
             setIsTransitioning(false);
         }, 300);
@@ -66,14 +91,14 @@ const SmartMirrors = () => {
 
     const handleSizeChange = (newSize) => {
         const newMirror = mirrorOptions.find(option => option.size === newSize);
-        
+
         // Calculate absolute scale based on area ratio
         const newArea = newMirror.width * newMirror.height;
         const baseArea = baseWidth * baseHeight;
         const absoluteScale = newArea / baseArea;
-        
+
         setIsTransitioning(true);
-        
+
         gsap.to(imageRef.current, {
             scale: absoluteScale,
             duration: 0.6,
@@ -82,20 +107,65 @@ const SmartMirrors = () => {
                 setIsTransitioning(false);
             }
         });
-        
+
         setSelectedSize(newSize);
     };
 
     const handleQuoteRequest = () => {
-        // Navigate to quote page with current selections
-        navigate('/mirror-quote', { 
-            state: { 
-                selectedMirror, 
-                selectedColor,
-                mirrorOptions,
-                frameColors
+        setShowQuoteForm(true);
+        // Scroll to form after a brief delay for animation
+        setTimeout(() => {
+            quoteFormRef.current?.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }, 300);
+    };
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({
+            ...prev,
+            [name]: value
+        }));
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log('Quote Request Submitted:', {
+            customerInfo: formData,
+            mirrorSelection: {
+                size: selectedMirror.size,
+                color: selectedColor,
+                price: selectedMirror.price,
+                dimensions: selectedMirror.dimensions,
+                touch: selectedMirror.touch
             }
         });
+
+        // Here you would typically send the data to your backend
+        alert('Quote request submitted successfully! We\'ll get back to you within 24 hours.');
+        setShowQuoteForm(false);
+        // Reset form
+        setFormData({
+            firstName: '',
+            lastName: '',
+            phone: '',
+            email: '',
+            country: '',
+            city: '',
+            productInterest: '',
+            additionalInfo: ''
+        });
+    };
+
+    const toggleDropdown = () => {
+        setIsDropdownOpen(!isDropdownOpen);
+    };
+
+    const selectMirrorOption = (option) => {
+        handleSizeChange(option.size);
+        setIsDropdownOpen(false);
     };
 
     return (
@@ -124,7 +194,7 @@ const SmartMirrors = () => {
                                 e.target.src = '/black.png';
                             }}
                         />
-                        
+
                         {/* Specs Badge */}
                         <div className="mirror-specs-badge">
                             <div className="mirror-specs-dimensions">{selectedMirror.dimensions}</div>
@@ -134,20 +204,38 @@ const SmartMirrors = () => {
 
                     {/* Configuration Panel */}
                     <div className="mirror-config-panel">
-                        {/* Size Selection */}
+                        {/* Size Selection - Cool Dropdown */}
                         <div>
                             <h3 className="mirror-section-title">Choose Size</h3>
-                            <div className="mirror-size-grid">
-                                {mirrorOptions.map((option) => (
-                                    <button
-                                        key={option.size}
-                                        className={`mirror-size-button ${selectedSize === option.size ? 'selected' : ''}`}
-                                        onClick={() => handleSizeChange(option.size)}
-                                    >
-                                        <div className="mirror-size-dimensions">{option.dimensions}</div>
-                                        <div className="mirror-size-touch">{option.touch} Touch Display</div>
-                                    </button>
-                                ))}
+                            <div className="cool-dropdown-container">
+                                <button
+                                    className={`cool-dropdown-trigger ${isDropdownOpen ? 'open' : ''}`}
+                                    onClick={toggleDropdown}
+                                >
+                                    <div className="dropdown-selected-content">
+                                        <div className="dropdown-main-text">{selectedMirror.dimensions}</div>
+                                        <div className="dropdown-sub-text">{selectedMirror.touch} Touch Display - ${selectedMirror.price}</div>
+                                    </div>
+                                    <MdExpandMore className={`dropdown-arrow ${isDropdownOpen ? 'rotated' : ''}`} />
+                                </button>
+
+                                <div className={`cool-dropdown-menu ${isDropdownOpen ? 'open' : ''}`}>
+                                    <div className="dropdown-menu-content">
+                                        {mirrorOptions.map((option) => (
+                                            <div
+                                                key={option.size}
+                                                className={`dropdown-option ${selectedSize === option.size ? 'selected' : ''}`}
+                                                onClick={() => selectMirrorOption(option)}
+                                            >
+                                                <div className="option-main">
+                                                    <div className="option-dimensions">{option.dimensions}</div>
+                                                    <div className="option-price">${option.price}</div>
+                                                </div>
+                                                <div className="option-details">{option.touch} Touch Display</div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -161,7 +249,7 @@ const SmartMirrors = () => {
                                         className={`mirror-color-button ${selectedColor === color.name ? 'selected' : ''}`}
                                         onClick={() => handleColorChange(color.name)}
                                     >
-                                        <div 
+                                        <div
                                             className="mirror-color-swatch"
                                             style={{ backgroundColor: color.hex }}
                                         />
@@ -217,6 +305,155 @@ const SmartMirrors = () => {
                                 Includes all necessary accessories, mounting hardware, and professional installation
                             </p>
                         </div>
+                    </div>
+                </div>
+
+                {/* Inline Quote Form */}
+                <div ref={quoteFormRef} className={`quote-section ${showQuoteForm ? 'visible' : ''}`}>
+                    <div className="quote-section-header">
+                        <h2 className="quote-section-title">Request Your Quote</h2>
+                        <p className="quote-section-subtitle">
+                            Fill out the form below and we'll get back to you with a custom quote within 24 hours
+                        </p>
+                    </div>
+
+                    <div className="quote-form-container">
+                        <form className="quote-modal-form" onSubmit={handleSubmit}>
+                            {/* Current Selection Summary */}
+                            <div className="quote-form-section">
+                                <h3>Your Current Selection</h3>
+                                <div className="quote-selected-info">
+                                    <p>{selectedMirror.dimensions} - {selectedMirror.touch} - {frameColors.find(c => c.name === selectedColor)?.label} Frame - ${selectedMirror.price}</p>
+                                </div>
+                            </div>
+
+                            {/* Contact Information */}
+                            <div className="quote-form-section">
+                                <h3>Contact Information</h3>
+
+                                <div className="quote-form-row">
+                                    <div className="quote-form-group">
+                                        <input
+                                            type="text"
+                                            name="firstName"
+                                            value={formData.firstName}
+                                            onChange={handleInputChange}
+                                            className="quote-form-input"
+                                            required
+                                            placeholder="First Name"
+                                        />
+                                    </div>
+                                    <div className="quote-form-group">
+                                        <input
+                                            type="text"
+                                            name="lastName"
+                                            value={formData.lastName}
+                                            onChange={handleInputChange}
+                                            className="quote-form-input"
+                                            required
+                                            placeholder="Last Name"
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="quote-form-row">
+                                    <div className="quote-form-group">
+                                        <input
+                                            type="tel"
+                                            name="phone"
+                                            value={formData.phone}
+                                            onChange={handleInputChange}
+                                            className="quote-form-input"
+                                            required
+                                            placeholder="Phone Number"
+                                        />
+                                    </div>
+                                    <div className="quote-form-group">
+                                        <input
+                                            type="email"
+                                            name="email"
+                                            value={formData.email}
+                                            onChange={handleInputChange}
+                                            className="quote-form-input"
+                                            required
+                                            placeholder="Email Address"
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="quote-form-row">
+                                    <div className="quote-form-group">
+                                        <input
+                                            type="text"
+                                            name="country"
+                                            value={formData.country}
+                                            onChange={handleInputChange}
+                                            className="quote-form-input"
+                                            required
+                                            placeholder="Country"
+                                        />
+                                    </div>
+                                    <div className="quote-form-group">
+                                        <input
+                                            type="text"
+                                            name="city"
+                                            value={formData.city}
+                                            onChange={handleInputChange}
+                                            className="quote-form-input"
+                                            required
+                                            placeholder="City"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Additional Information */}
+                            <div className="quote-form-section">
+                                <h3>Additional Information</h3>
+
+                                <div className="quote-form-group">
+                                    <label className="quote-form-label">Product of Interest</label>
+                                    <input
+                                        type="text"
+                                        name="productInterest"
+                                        value={formData.productInterest}
+                                        onChange={handleInputChange}
+                                        className="quote-form-input"
+                                        placeholder="e.g., Smart Mirror for bathroom, living room, etc."
+                                    />
+                                </div>
+
+                                <div className="quote-form-group">
+                                    <label className="quote-form-label">Additional Information or Requests</label>
+                                    <textarea
+                                        name="additionalInfo"
+                                        value={formData.additionalInfo}
+                                        onChange={handleInputChange}
+                                        className="quote-form-textarea"
+                                        placeholder="Any specific requirements, installation preferences, questions, or additional features you'd like..."
+                                        rows="4"
+                                    />
+                                </div>
+                            </div>
+
+                            {/* Form Actions */}
+                            <div className="quote-form-actions">
+                                <button
+                                    type="button"
+                                    className="quote-btn-secondary"
+                                    onClick={() => setShowQuoteForm(false)}
+                                >
+                                    Cancel
+                                </button>
+                                <button
+                                    type="submit"
+                                    className="quote-btn-primary"
+                                >
+                                    <MdSend />
+                                    Submit Quote Request
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

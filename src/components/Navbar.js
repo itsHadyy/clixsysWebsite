@@ -47,6 +47,14 @@ function Navbar() {
         <ul>
           <li><Link to="/" className="animated-link">Home</Link></li>
           <li className="dropdown" onMouseEnter={() => setDropdownVisible(true)} onMouseLeave={() => setDropdownVisible(false)}>
+            <span className="animated-link">Products</span>
+            <ul className={`dropdown-menu ${dropdownVisible ? "open" : "closed"}`}>
+              <li><Link to="/mirrors">Smart Interactive Mirrors</Link></li>
+              <li><Link to="/smart">Smart Products</Link></li>
+              <li><Link to="/software">Software Solutions</Link></li>
+            </ul>
+          </li>
+          <li className="dropdown" onMouseEnter={() => setDropdownVisible(true)} onMouseLeave={() => setDropdownVisible(false)}>
             <span className="animated-link">Services</span>
             <ul className={`dropdown-menu ${dropdownVisible ? "open" : "closed"}`}>
               <li><Link to="/automation">Automation Systems</Link></li>
@@ -55,7 +63,6 @@ function Navbar() {
             </ul>
           </li>
           <li><Link to="/Projects" className="animated-link">Projects</Link></li>
-          <li><Link to="/mirrors" className="animated-link">Smart Mirrors</Link></li>
           <li><Link to="/About" className="animated-link">About</Link></li>
         </ul>
       </div>

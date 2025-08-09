@@ -151,6 +151,7 @@ a {
   /* Double size for sliding effect */
   background-position: 100% 0;
   /* Start with black */
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   transition: background-position 0.2s ease;
@@ -443,7 +444,7 @@ footer input[type=submit] {
 }
 
 .cta26-container2:hover button,
-.cta26-container2:hover p, 
+.cta26-container2:hover p,
 .cta26-container2:hover a {
   color: var(--white) !important;
 }
@@ -1113,7 +1114,7 @@ form .btn {
 .nav-btns {
   text-align: right;
   align-items: center;
-justify-content: end;
+  justify-content: end;
 }
 
 .projFeatures h2 {
@@ -1443,7 +1444,7 @@ a {
     padding-right: 0;
   }
 
-  .nav:hover button{
+  .nav:hover button {
     scale: 0.8 !important;
   }
 
@@ -1617,10 +1618,15 @@ a {
     width: auto;
   }
 
-  .btn01, .btn, button, a.btn01, a.btn{
+  .btn01,
+  .btn,
+  button,
+  a.btn01,
+  a.btn {
     min-width: 36px;
     min-height: 36px;
   }
+
   .prev-btn02,
   .next-btn02 {
     scale: 0.8;
@@ -1672,7 +1678,8 @@ a {
     gap: 10px;
   }
 
-  .products-icon, .scope-icon{
+  .products-icon,
+  .scope-icon {
     font-size: 1.8rem;
   }
 }
@@ -1688,28 +1695,34 @@ a {
 /* Modern Spinner Styles */
 .spinner-overlay {
   position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(255,255,255,0.85);
+  background: rgba(255, 255, 255, 0.85);
   z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.4s cubic-bezier(.4,0,.2,1);
+  transition: opacity 0.4s cubic-bezier(.4, 0, .2, 1);
 }
+
 .spinner-show {
   opacity: 1;
   pointer-events: auto;
 }
+
 .spinner-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 24px;
 }
+
 .spinner-circle {
   width: 64px;
   height: 64px;
@@ -1717,12 +1730,19 @@ a {
   border-top: 6px solid #efcb03;
   border-radius: 50%;
   animation: spinner-rotate 1s linear infinite;
-  box-shadow: 0 4px 24px rgba(239,203,3,0.15);
+  box-shadow: 0 4px 24px rgba(239, 203, 3, 0.15);
 }
+
 @keyframes spinner-rotate {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
+
 .spinner-text {
   font-size: 1.2rem;
   color: #191919;
@@ -1789,10 +1809,10 @@ a {
   position: absolute;
   top: 20px;
   right: 20px;
-  background: rgba(255,255,255,0.95);
+  background: rgba(255, 255, 255, 0.95);
   padding: 1rem;
   border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10px);
 }
 
@@ -1835,7 +1855,7 @@ a {
   cursor: pointer;
   transition: all 0.3s ease;
   text-align: left;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .mirror-size-button.selected {
@@ -1846,7 +1866,7 @@ a {
 
 .mirror-size-button:hover:not(.selected) {
   transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
 .mirror-size-dimensions {
@@ -1879,7 +1899,7 @@ a {
   gap: 0.5rem;
   min-width: 120px;
   justify-content: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .mirror-color-button.selected {
@@ -1890,7 +1910,7 @@ a {
 
 .mirror-color-button:hover:not(.selected) {
   transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
 .mirror-color-swatch {
@@ -1898,7 +1918,7 @@ a {
   height: 20px;
   border-radius: 50%;
   border: 2px solid white;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .mirror-price-container {
@@ -1950,7 +1970,7 @@ a {
   background: white;
   padding: 4rem 2rem;
   border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   margin-bottom: 4rem;
 }
 
@@ -1995,91 +2015,368 @@ a {
   line-height: 1.6;
 }
 
-/* Responsive Design for Mirrors Page */
-@media (max-width: 768px) {
-  .mirror-configurator {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-  
-  .mirrors-hero-title {
-    font-size: 2.5rem;
-  }
-  
-  .mirrors-hero-description {
-    font-size: 1rem;
-  }
-  
-  .mirror-image-container {
-    min-height: 300px;
-  }
-  
-  .mirror-size-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .mirror-color-container {
-    justify-content: center;
-  }
-  
-  .mirrors-features-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .mirrors-features-title {
-    font-size: 2rem;
-  }
+/* Cool Dropdown Styles */
+.cool-dropdown-container {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
 }
 
-/* Mirror Quote Modal Styles */
+.cool-dropdown-trigger {
+  width: 100%;
+  padding: 1.5rem;
+  background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+  border: 2px solid var(--lightGray);
+  border-radius: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.cool-dropdown-trigger::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(78, 78, 78, 0.4), transparent);
+  transition: left 0.6s;
+}
+
+.cool-dropdown-trigger:hover::before {
+  left: 100%;
+}
+
+.cool-dropdown-trigger:hover {
+  border-color: var(--darkGray);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(93, 93, 93, 0.2);
+}
+
+.cool-dropdown-trigger.open {
+  border-color: var(--darkGray);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.dropdown-selected-content {
+  flex: 1;
+  text-align: left;
+}
+
+.dropdown-main-text {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--black);
+  margin-bottom: 0.25rem;
+}
+
+.dropdown-sub-text {
+  font-size: 0.9rem;
+  color: var(--darkGray);
+  font-weight: 400;
+}
+
+.dropdown-arrow {
+  font-size: 1.5rem;
+  color: var(--darkGray);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-left: 1rem;
+}
+
+.dropdown-arrow.rotated {
+  transform: rotate(180deg);
+}
+
+.cool-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 2px solid var(--lightGray);
+  border-top: none;
+  border-radius: 0 0 16px 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(-10px);
+  opacity: 0;
+}
+
+.cool-dropdown-menu.open {
+  max-height: 300px;
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.dropdown-menu-content {
+  padding: 0.5rem 0;
+  max-height: 280px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--lightGray) transparent;
+}
+
+.dropdown-menu-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.dropdown-menu-content::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 3px;
+}
+
+.dropdown-menu-content::-webkit-scrollbar-thumb {
+  background: var(--lightGray);
+  border-radius: 3px;
+  transition: background 0.3s ease;
+}
+
+.dropdown-menu-content::-webkit-scrollbar-thumb:hover {
+  background: var(--darkGray);
+}
+
+.dropdown-option {
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+  position: relative;
+}
+
+.dropdown-option:hover {
+  background: linear-gradient(90deg, transparent, rgba(78, 78, 78, 0.1), transparent);
+  border-left-color: var(--lightGray);
+  transform: translateX(4px);
+}
+
+.dropdown-option.selected {
+  background: linear-gradient(90deg, rgba(25, 25, 25, 0.1) 0%, rgba(25, 25, 25, 0.05) 100%);
+  border-left-color: var(--black);
+}
+
+.dropdown-option.selected:hover {
+  background: linear-gradient(90deg, rgba(25, 25, 25, 0.15) 0%, rgba(25, 25, 25, 0.08) 100%);
+  border-left-color: var(--black);
+}
+
+.option-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.25rem;
+}
+
+.option-dimensions {
+  font-weight: 600;
+  color: var(--black);
+  font-size: 1rem;
+}
+
+.option-price {
+  font-weight: 700;
+  color: var(--darkGray);
+  font-size: 1.1rem;
+}
+
+.option-details {
+  font-size: 0.85rem;
+  color: var(--darkGray);
+  font-weight: 400;
+}
+
+/* Enhanced Modal Overlay with Backdrop Blur */
 .quote-modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 10000;
-  backdrop-filter: blur(5px);
+  opacity: 0;
+  animation: modalFadeIn 0.3s ease-out forwards;
+}
+
+@keyframes modalFadeIn {
+  to {
+    opacity: 1;
+  }
 }
 
 .quote-modal-container {
-  background-color: white;
-  padding: 2.5rem;
-  border-radius: 16px;
-  max-width: 80%;
+  background: white;
+  border-radius: 20px;
+  max-width: 85vw;
   width: 100%;
+  max-height: 90vh;
   overflow-y: auto;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+  position: relative;
+  transform: scale(0.9) translateY(20px);
+  animation: modalSlideIn 0.4s ease-out 0.1s forwards;
+}
+
+@keyframes modalSlideIn {
+  to {
+    transform: scale(1) translateY(0);
+  }
 }
 
 .quote-modal-close {
   position: absolute;
-  top: 15px;
+  top: 20px;
   right: 20px;
-  background: none;
+  background: rgba(0, 0, 0, 0.05);
   border: none;
-  font-size: 28px;
-  cursor: pointer;
-  color: #333;
   width: 40px;
   height: 40px;
   border-radius: 50%;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 1.5rem;
+  color: var(--darkGray);
   transition: all 0.3s ease;
+  z-index: 1;
 }
 
 .quote-modal-close:hover {
-  background-color: #f5f5f5;
-  color: #000;
+  background: rgba(239, 203, 3, 0.2);
+  color: var(--black);
   transform: scale(1.1);
 }
+
+/* Responsive Design for Mirrors Page */
+@media (max-width: 768px) {
+  .mirror-configurator {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .mirrors-hero-title {
+    font-size: 2.5rem;
+  }
+
+  .mirrors-hero-description {
+    font-size: 1rem;
+  }
+
+  .mirror-image-container {
+    min-height: 300px;
+  }
+
+  .cool-dropdown-container {
+    max-width: 100%;
+  }
+
+  .dropdown-main-text {
+    font-size: 1rem;
+  }
+
+  .dropdown-sub-text {
+    font-size: 0.8rem;
+  }
+
+  .dropdown-option {
+    padding: 0.75rem 1rem;
+  }
+
+  .option-main {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
+  .mirror-color-container {
+    justify-content: center;
+  }
+
+  .mirrors-features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mirrors-features-title {
+    font-size: 2rem;
+  }
+
+  .quote-modal-container {
+    max-width: 95vw;
+    margin: 1rem;
+  }
+
+  .quote-section {
+    margin-top: 2rem;
+    padding: 2rem 1rem;
+  }
+
+  .quote-section-title {
+    font-size: 2rem;
+  }
+
+  .quote-section-subtitle {
+    font-size: 1rem;
+  }
+}
+
+/* Inline Quote Form Styles */
+.quote-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  max-height: 0;
+  overflow: hidden;
+}
+
+.quote-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+  max-height: 2000px;
+}
+
+.quote-section-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.quote-section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--black);
+  margin-bottom: 0.5rem;
+  font-family: var(--font02);
+}
+
+.quote-section-subtitle {
+  color: var(--darkGray);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.quote-form-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Enhanced Quote Modal Styles - Modern Design */
 
 .quote-modal-title {
   font-size: 2.2rem;
@@ -2105,11 +2402,11 @@ a {
 }
 
 .quote-form-section {
-  background: linear-gradient(145deg, #f8f9fa 0%, #e9ecef 100%);
+  background: linear-gradient(145deg, #f8f9fa 0%, #e7e7e7 100%);
   border: 1px solid var(--lightGray);
   border-radius: 16px;
   padding: 2rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
@@ -2118,6 +2415,7 @@ a {
   font-weight: 600;
   color: var(--black);
   margin-bottom: 1.5rem;
+  margin-top: 0;
   font-family: var(--font02);
   display: flex;
   align-items: center;
@@ -2177,9 +2475,10 @@ a {
 .quote-form-select:focus,
 .quote-form-textarea:focus {
   outline: none;
-  border-color: var(--gold);
-  box-shadow: 0 0 0 4px rgba(239, 203, 3, 0.15);
+  border-color: var(--darkGray);
+  box-shadow: 0 0 10px 4px rgba(152, 152, 152, 0.15);
   transform: translateY(-1px);
+  scale: 1;
 }
 
 .quote-form-select {
@@ -2199,12 +2498,12 @@ a {
 }
 
 .quote-selected-info {
-  background: linear-gradient(135deg, var(--gold) 0%, #f7d794 100%);
+  background: linear-gradient(135deg, #d3d3d3 0%, var(--lightGray) 100%);
   padding: 1.25rem;
   border-radius: 12px;
-  border: 1px solid rgba(239, 203, 3, 0.3);
+  border: none;
   margin-top: 1rem;
-  box-shadow: 0 4px 12px rgba(239, 203, 3, 0.2);
+  box-shadow: 0 4px 12px rgba(152, 152, 152, 0.2);
 }
 
 .quote-selected-info p {
@@ -2311,25 +2610,25 @@ body.modal-open {
     margin: 1rem;
     max-height: 90vh;
   }
-  
+
   .quote-form-row {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
-  
+
   .quote-form-actions {
     flex-direction: column;
     gap: 0.75rem;
   }
-  
+
   .quote-modal-title {
     font-size: 1.8rem;
   }
-  
+
   .quote-form-section {
     padding: 1.5rem;
   }
-  
+
   .quote-btn-primary,
   .quote-btn-secondary {
     width: 100%;
@@ -2342,11 +2641,11 @@ body.modal-open {
     padding: 1rem;
     margin: 0.5rem;
   }
-  
+
   .quote-modal-title {
     font-size: 1.5rem;
   }
-  
+
   .quote-form-section {
     padding: 1rem;
   }
@@ -2637,39 +2936,39 @@ body.modal-open {
   .quote-title {
     font-size: 2.5rem;
   }
-  
+
   .quote-subtitle {
     font-size: 1rem;
   }
-  
+
   .quote-content {
     margin: 0 1rem;
   }
-  
+
   .form-row {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
-  
+
   .selection-details {
     grid-template-columns: 1fr;
   }
-  
+
   .submit-actions {
     flex-direction: column;
     align-items: center;
   }
-  
+
   .btn-primary,
   .btn-secondary {
     width: 100%;
     max-width: 300px;
   }
-  
+
   .form-section {
     padding: 1.5rem;
   }
-  
+
   .quote-form {
     padding: 1.5rem;
   }
@@ -2679,15 +2978,15 @@ body.modal-open {
   .quote-title {
     font-size: 2rem;
   }
-  
+
   .form-section {
     padding: 1rem;
   }
-  
+
   .quote-form {
     padding: 1rem;
   }
-  
+
   .selection-summary {
     padding: 1.5rem;
   }
