@@ -49,9 +49,9 @@ function Navbar() {
           <li className="dropdown" onMouseEnter={() => setDropdownVisible(true)} onMouseLeave={() => setDropdownVisible(false)}>
             <span className="animated-link">Products</span>
             <ul className={`dropdown-menu ${dropdownVisible ? "open" : "closed"}`}>
-              <li><Link to="/mirrors">Smart Interactive Mirrors</Link></li>
-              <li><Link to="/smart">Smart Products</Link></li>
-              <li><Link to="/software">Software Solutions</Link></li>
+              <li><Link to="/mirrors">Interactive Mirrors</Link></li>
+              <li><Link to="/tv">TV Mechanisms</Link></li>
+              <li><Link to="/tables">Tables & Desks</Link></li>
             </ul>
           </li>
           <li className="dropdown" onMouseEnter={() => setDropdownVisible(true)} onMouseLeave={() => setDropdownVisible(false)}>
@@ -85,7 +85,9 @@ function Navbar() {
           <li><Link to="/smart" onClick={() => setIsOpen(false)}>Smart Products</Link></li>
           <li><Link to="/software" onClick={() => setIsOpen(false)}>Software Solutions</Link></li>
           <li><Link to="/projects" onClick={() => setIsOpen(false)}>Projects</Link></li>
-          <li><Link to="/mirrors" onClick={() => setIsOpen(false)}>Smart Mirrors</Link></li>
+          <li><Link to="/mirrors" onClick={() => setIsOpen(false)}>Smart Interactive Mirrors</Link></li>
+          <li><Link to="/tv" onClick={() => setIsOpen(false)}>TV Mechanisms</Link></li>
+          <li><Link to="/tables" onClick={() => setIsOpen(false)}>Tables & Desks</Link></li>
           <li><Link to="/about" onClick={() => setIsOpen(false)}>About</Link></li>
         </ul>
         <button className="btn01">

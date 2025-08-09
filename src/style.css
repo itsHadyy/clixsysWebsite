@@ -2263,6 +2263,8 @@ a {
   transform: scale(1.1);
 }
 
+/* TV-specific styles removed in favor of reusing Mirrors page classes */
+
 /* Responsive Design for Mirrors Page */
 @media (max-width: 768px) {
   .mirror-configurator {
@@ -2360,7 +2362,7 @@ a {
   font-weight: 700;
   color: var(--black);
   margin-bottom: 0.5rem;
-  font-family: var(--font02);
+  font-family: var(--font01);
 }
 
 .quote-section-subtitle {
