@@ -39,7 +39,7 @@ const Tables = () => {
 
   const [selectedId, setSelectedId] = useState(items[0].id);
   const selected = items.find(i => i.id === selectedId);
-  const imageUrl = `/${selected.type === 'table' ? 'table.png' : 'disk.png'}`;
+  const imageUrl = `/${selected.type === 'table' ? 'table.png' : 'desk.png'}`;
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);

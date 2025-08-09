@@ -5,6 +5,13 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { MdTouchApp, MdOutlineSecurity, MdOutlineLightbulb, MdOutlineWifi, MdExpandMore, MdSend } from 'react-icons/md';
 
+// Static color definitions (module-level to avoid re-creating arrays and ESLint warnings)
+const FRAME_COLORS = [
+    { name: 'black', label: 'Black', hex: '#191919' },
+    { name: 'gold', label: 'Gold', hex: '#efcb03' },
+    { name: 'silver', label: 'Silver', hex: '#868686' }
+];
+
 const SmartMirrors = () => {
     const imageRef = useRef(null);
 
@@ -15,6 +22,7 @@ const SmartMirrors = () => {
     const [selectedSize, setSelectedSize] = useState('200*80*10');
     const [selectedColor, setSelectedColor] = useState('black');
     const [isTransitioning, setIsTransitioning] = useState(false);
+    const [isImageLoading, setIsImageLoading] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [showQuoteForm, setShowQuoteForm] = useState(false);
     const [formData, setFormData] = useState({
@@ -41,11 +49,7 @@ const SmartMirrors = () => {
         { size: '200*80*10', touch: '32-inch', price: 2360, scale: 1.4, dimensions: '200cm × 80cm x 10cm', width: 200, height: 80 },
     ];
 
-    const frameColors = [
-        { name: 'black', label: 'Black', hex: '#191919' },
-        { name: 'gold', label: 'Gold', hex: '#efcb03' },
-        { name: 'silver', label: 'Silver', hex: '#868686' }
-    ];
+    const frameColors = FRAME_COLORS;
 
     const selectedMirror = mirrorOptions.find(option => option.size === selectedSize);
     const imageName = `${selectedColor}.png`;
@@ -64,6 +68,11 @@ const SmartMirrors = () => {
             { opacity: 0, y: 30 },
             { opacity: 1, y: 0, duration: 0.8, stagger: 0.2, scrollTrigger: { trigger: '.mirrors-features-grid', start: 'top 80%' } }
         );
+        // Preload mirror color images to avoid visible loading
+        FRAME_COLORS.forEach((c) => {
+            const pre = new Image();
+            pre.src = `/${c.name}.png`;
+        });
     }, []);
 
     // Close dropdown when clicking outside
@@ -81,12 +90,12 @@ const SmartMirrors = () => {
     }, [isDropdownOpen]);
 
     const handleColorChange = (newColor) => {
+        if (newColor === selectedColor) return;
         setSelectedColor(newColor);
         setIsTransitioning(true);
-
-        setTimeout(() => {
-            setIsTransitioning(false);
-        }, 300);
+        setIsImageLoading(true);
+        // End transform animation; the actual loading flag will be cleared on image onLoad
+        setTimeout(() => setIsTransitioning(false), 300);
     };
 
     const handleSizeChange = (newSize) => {
@@ -211,7 +220,14 @@ const SmartMirrors = () => {
                             onError={(e) => {
                                 e.target.src = '/black.png';
                             }}
+                            onLoad={() => setIsImageLoading(false)}
                         />
+
+                        {isImageLoading && (
+                            <div className="img-loader">
+                                <div className="spinner-circle" />
+                            </div>
+                        )}
 
                         {/* Specs Badge */}
                         <div className="mirror-specs-badge">

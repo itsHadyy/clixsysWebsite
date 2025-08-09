@@ -76,8 +76,9 @@ $sendgridKey = getenv('SENDGRID_API_KEY') ?: (defined('SENDGRID_API_KEY') ? SEND
 $resendKey   = getenv('RESEND_API_KEY')   ?: (defined('RESEND_API_KEY')   ? RESEND_API_KEY   : null);
 
 // Recipient and sender
-$toEmail = 'info@clixsys.com';
-$senderEmail = getenv('SENDER_EMAIL') ?: (defined('SENDER_EMAIL') ? SENDER_EMAIL : 'info@clixsys.com'); // verified/single sender
+$toEmail = 'heshamafahmy@clixsys.com'; // primary recipient
+$ccEmail = 'info@clixsys.com'; // secondary copy
+$senderEmail = getenv('SENDER_EMAIL') ?: (defined('SENDER_EMAIL') ? SENDER_EMAIL : 'heshamafahmy@clixsys.com'); // verified/single sender
 $senderName  = getenv('SENDER_NAME') ?: (defined('SENDER_NAME') ? SENDER_NAME : 'ClixSys Website');
 
 // Render HTML body
@@ -88,14 +89,19 @@ $htmlBody = '<div style="font-family:Arial,Helvetica,sans-serif">'
   . '</div>';
 
 if ($sendgridKey) {
+  $toList = [[ 'email' => $toEmail ]];
+  if ($ccEmail && strtolower($ccEmail) !== strtolower($toEmail)) {
+    $toList[] = [ 'email' => $ccEmail ];
+  }
   $sgPayload = [
-    'personalizations' => [[ 'to' => [[ 'email' => $toEmail ]] ]],
+    'personalizations' => [[ 'to' => $toList ]],
     'from' => [ 'email' => $senderEmail, 'name' => $senderName ],
     'subject' => $subject,
     'content' => [
       [ 'type' => 'text/plain', 'value' => strip_tags($formType) . "\n\n" . strip_tags($htmlTable) ],
       [ 'type' => 'text/html', 'value' => $htmlBody ]
-    ]
+    ],
+    'reply_to' => $email ? [ 'email' => $email ] : null
   ];
   $ch = curl_init('https://api.sendgrid.com/v3/mail/send');
   curl_setopt($ch, CURLOPT_POST, true);
@@ -153,5 +159,3 @@ if ($resendKey) {
 http_response_code(500);
 echo json_encode(['ok' => false, 'error' => 'No email provider configured. Set SENDGRID_API_KEY or RESEND_API_KEY.']);
 ?>
-
-
