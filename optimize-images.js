@@ -11,7 +11,7 @@ const imageConfigs = {
   'img05.webp': { width: 300, height: 375, quality: 80 },
   'img07.webp': { width: 300, height: 375, quality: 80 },
   'mechanism.webp': { width: 600, height: 400, quality: 80 },
-  'logo02.jpg': { width: 810, height: 493, quality: 85 }
+  'icon.png': { width: 512, height: 512, quality: 90 }
 };
 
 // Responsive sizes to generate
@@ -68,7 +68,7 @@ async function optimizeAllImages() {
   
   // Optimize slider images
   for (const [filename, config] of Object.entries(imageConfigs)) {
-    if (filename === 'logo02.jpg') continue; // Handle logo separately
+    if (filename === 'icon.png') continue; // Handle icon separately
     
     const inputPath = path.join(mediaDir, filename);
     const outputPath = path.join(mediaDir, `optimized-${filename}`);
@@ -81,15 +81,15 @@ async function optimizeAllImages() {
     }
   }
   
-  // Optimize logo
-  const logoInputPath = path.join(publicDir, 'logo02.jpg');
-  const logoOutputPath = path.join(publicDir, 'logo02-optimized.jpg');
+  // Optimize icon
+  const iconInputPath = path.join(publicDir, 'icon.png');
+  const iconOutputPath = path.join(publicDir, 'icon-optimized.png');
   
-  if (fs.existsSync(logoInputPath)) {
-    await optimizeImage(logoInputPath, logoOutputPath, imageConfigs['logo02.jpg']);
-    await createResponsiveVariants(logoInputPath, 'logo02.jpg');
+  if (fs.existsSync(iconInputPath)) {
+    await optimizeImage(iconInputPath, iconOutputPath, imageConfigs['icon.png']);
+    await createResponsiveVariants(iconInputPath, 'icon.png');
   } else {
-    console.log(`⚠️  Logo file not found: ${logoInputPath}`);
+    console.log(`⚠️  Icon file not found: ${iconInputPath}`);
   }
   
   console.log('\n🎉 Image optimization complete!');

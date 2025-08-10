@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import '../style.css';
-import logo from '../logo01.webp';
-import logo2 from '../logo02.webp';
+import logo from '../logo02.webp';
 
 import Slideshow from '../components/Slideshow';
 import '../components/features24.css'
@@ -310,7 +309,7 @@ function About() {
                 )}
             </div>
             <div className='home01 ceoLetter'>
-                <img src={logo2} alt="Logo" className="logo02" loading="lazy" />
+                <img src={logo} alt="Logo" className="logo02" loading="lazy" />
                 <h2>CEO Open Letter</h2>
                 <div className='about01'>
                     <p>

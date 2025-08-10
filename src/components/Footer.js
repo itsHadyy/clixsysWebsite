@@ -30,7 +30,7 @@ function Footer() {
                     <div>
                         <h4>General</h4>
                         <p>+2 011 005 12345</p>
-                        <p>info@clixsys.com</p>
+                        <p>heshamafahmy@clixsys.com</p>
                     </div>
                     <div>
                         <Link to="/contact" className="btn01">Contact</Link>

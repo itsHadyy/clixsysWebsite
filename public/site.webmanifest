@@ -1,0 +1,20 @@
+{
+  "name": "ClixSys - Smart Home Automation & IoT Solutions",
+  "short_name": "ClixSys",
+  "description": "Leading provider of smart home automation, IoT integration, and intelligent home solutions",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#000000",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}

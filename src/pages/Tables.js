@@ -288,7 +288,7 @@ const Tables = () => {
 
               <div className="quote-form-actions">
                 <button type="button" className="quote-btn-secondary" onClick={() => setShowQuoteForm(false)}>Cancel</button>
-                <button type="submit" className="quote-btn-primary"><MdSend />Submit Quote Request</button>
+                <button type="submit" className="quote-btn-primary">Submit Quote Request<MdSend /></button>
               </div>
             </form>
           </div>

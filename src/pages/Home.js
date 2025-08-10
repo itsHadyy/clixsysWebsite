@@ -161,8 +161,8 @@ function Home() {
             }}
           >
             <img
-              src={'/logo02.jpg'}
-              srcSet="/logo02-300.jpg 300w, /logo02-600.jpg 600w, /logo02.jpg 1200w"
+              src={'/logo02.webp'}
+              srcSet="/logo02-300.webp 300w, /logo02-600.webp 600w, /logo02.webp 1200w"
               sizes="(max-width: 768px) 300px, 600px"
               alt="Clixsys Logo"
               style={{ maxWidth: '60%', maxHeight: '60%' }}

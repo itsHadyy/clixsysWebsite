@@ -1,4 +1,22 @@
 User-agent: *
 Allow: /
- 
-Sitemap: https://clixsys.com/sitemap.xml 
+
+# Block admin and private areas
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /node_modules/
+
+# Allow important directories
+Allow: /images/
+Allow: /fonts/
+Allow: /static/
+
+# Crawl delay for better server performance
+Crawl-delay: 1
+
+# Sitemaps
+Sitemap: https://clixsys.com/sitemap.xml
+Sitemap: https://clixsys.com/sitemap-smart-home.xml
+Sitemap: https://clixsys.com/sitemap-services.xml 

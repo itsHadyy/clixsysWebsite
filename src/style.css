@@ -288,6 +288,8 @@ footer {
   margin: auto;
 }
 
+
+
 .footer-left {
   display: flex;
   justify-content: space-around;
@@ -1394,10 +1396,6 @@ a {
 }
 
 @media (max-width: 768px) {
-
-  * {
-    box-sizing: border-box;
-  }
 
   .links ul,
   .nav-btns {
