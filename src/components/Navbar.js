@@ -81,18 +81,16 @@ function Navbar() {
         <Hamburger toggled={isOpen} toggle={setIsOpen} />
         <ul>
           <li><Link to="/" onClick={() => setIsOpen(false)}>Home</Link></li>
+          <li><Link to="/mirrors" onClick={() => setIsOpen(false)}>Smart Interactive Mirrors</Link></li>
+          <li><Link to="/tv" onClick={() => setIsOpen(false)}>TV Mechanisms</Link></li>
+          <li><Link to="/tables" onClick={() => setIsOpen(false)}>Tables & Desks</Link></li>
           <li><Link to="/automation" onClick={() => setIsOpen(false)}>Automation Systems</Link></li>
           <li><Link to="/smart" onClick={() => setIsOpen(false)}>Smart Products</Link></li>
           <li><Link to="/software" onClick={() => setIsOpen(false)}>Software Solutions</Link></li>
           <li><Link to="/projects" onClick={() => setIsOpen(false)}>Projects</Link></li>
-          <li><Link to="/mirrors" onClick={() => setIsOpen(false)}>Smart Interactive Mirrors</Link></li>
-          <li><Link to="/tv" onClick={() => setIsOpen(false)}>TV Mechanisms</Link></li>
-          <li><Link to="/tables" onClick={() => setIsOpen(false)}>Tables & Desks</Link></li>
           <li><Link to="/about" onClick={() => setIsOpen(false)}>About</Link></li>
+          <li><Link to="/contact" onClick={() => setIsOpen(false)}>Contact Us</Link></li>
         </ul>
-        <button className="btn01">
-          <Link to="/contact" onClick={() => setIsOpen(false)}>Contact Us</Link>
-        </button>
       </div>
     </div>
   );

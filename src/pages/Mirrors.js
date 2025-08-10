@@ -483,8 +483,8 @@ const SmartMirrors = () => {
                                     type="submit"
                                     className="quote-btn-primary"
                                 >
-                                    <MdSend />
                                     Submit Quote Request
+                                    <MdSend />
                                 </button>
                             </div>
                         </form>

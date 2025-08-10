@@ -936,7 +936,6 @@ form .btn {
 
 .contact {
   padding-top: 140px;
-  height: 75vh;
 }
 
 .next-btn,
@@ -1329,6 +1328,15 @@ a {
   text-align: center;
 }
 
+.footer-bottom {
+  text-align: center;
+  column-span: all;
+}
+
+.footer-bottom p {
+  margin: 0;
+}
+
 @media (max-width: 900px) {
   .scope-of-work-grid {
     flex-direction: column;
@@ -1440,7 +1448,7 @@ a {
 
   .nav:hover,
   .nav {
-    padding: 20px 20px;
+    padding: 10px 20px;
     padding-right: 0;
   }
 
@@ -1682,6 +1690,28 @@ a {
   .scope-icon {
     font-size: 1.8rem;
   }
+
+  .social {
+    justify-content: center;
+  }
+
+  .footer-bottom {
+    text-align: center;
+  }
+
+  footer .btn01{
+    margin: 120px auto !important;
+  }
+
+  .contact{
+    padding-top: 120px;
+    height: auto !important;
+  }
+
+}
+
+.quote-btn-primary svg{
+  transform: translateY(2px) translateX(8px);
 }
 
 .about-counter-container h3 {
@@ -1938,7 +1968,7 @@ a {
   border-radius: 16px;
   color: white;
   margin-bottom: 2rem;
-  box-shadow: 0 8px 24px rgba(5, 132, 230, 0.3);
+  box-shadow: 0 8px 24px rgba(127, 127, 127, 0.3);
 }
 
 .mirror-price-label {
@@ -2346,7 +2376,7 @@ a {
 
   .quote-section {
     margin-top: 2rem;
-    padding: 2rem 1rem;
+    padding: 2rem 0rem;
   }
 
   .quote-section-title {
@@ -2367,6 +2397,10 @@ a {
     width: 80%;
     height: 100%;
     object-fit: cover;
+  }
+
+  .mirror-price-container{
+    padding: 1rem;
   }
 }
 
@@ -2559,8 +2593,8 @@ a {
 }
 
 .quote-btn-primary {
-  background: linear-gradient(135deg, var(--gold) 0%, #f7d794 100%);
-  color: var(--black);
+  background: linear-gradient(135deg, #191919 0%, var(--darkGray) 100%);
+  color: var(--white);
   border: none;
   padding: 1rem 2rem;
   border-radius: 12px;
@@ -2569,14 +2603,15 @@ a {
   cursor: pointer;
   transition: all 0.3s ease;
   font-family: var(--font01);
-  box-shadow: 0 4px 12px rgba(239, 203, 3, 0.3);
+  box-shadow: 0 4px 12px rgba(104, 104, 102, 0.3);
   min-width: 160px;
 }
 
 .quote-btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(239, 203, 3, 0.4);
-  background: linear-gradient(135deg, #f7d794 0%, var(--gold) 100%);
+  box-shadow: 0 8px 20px rgba(127, 127, 127, 0.4);
+  color: var(--white);
+  background: linear-gradient(135deg, var(--darkGray) 0%,  #191919 100%);
 }
 
 .quote-btn-secondary {

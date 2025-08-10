@@ -9,18 +9,17 @@ function Footer() {
             <hr />
             <div className="footer-container">
                 <div className="footer-left">
-                    <div className='social' style={{minHeight:48,display:'flex',alignItems:'center',gap:16}}>
+                    <div className='social' style={{ minHeight: 48, display: 'flex', alignItems: 'center', gap: 16 }}>
                         <Link to="https://www.instagram.com/clixsys_co/" aria-label="Clixsys Instagram">
-                            <SlSocialInstagram size={32} style={{width:32,height:32}} />
+                            <SlSocialInstagram size={32} style={{ width: 32, height: 32 }} />
                         </Link>
                         <Link to="https://www.linkedin.com/company/clixsys/" aria-label="Clixsys LinkedIn">
-                            <SlSocialLinkedin size={32} style={{width:32,height:32}} />
+                            <SlSocialLinkedin size={32} style={{ width: 32, height: 32 }} />
                         </Link>
                         <Link to="https://www.facebook.com/Clixsys-102724245572309" aria-label="Clixsys Facebook">
-                            <SlSocialFacebook size={32} style={{width:32,height:32}} />
+                            <SlSocialFacebook size={32} style={{ width: 32, height: 32 }} />
                         </Link>
 
-                        <p>All rights reserved. | &copy;Copyright 2025 </p>
                     </div>
                     <div>
                         <h4>Address</h4>
@@ -41,6 +40,9 @@ function Footer() {
                         <input type="submit" value={"Subscribe"} />
                     </form>  */}
                 </div>
+            </div>
+            <div className="footer-bottom">
+                <p>All rights reserved. | &copy;Copyright 2025 Clixsys</p>
             </div>
         </footer>
     );
