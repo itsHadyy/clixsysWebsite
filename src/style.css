@@ -1961,20 +1961,21 @@ a {
 .mirror-cta-button {
   width: 100%;
   padding: 1rem 2rem;
-  background-color: var(--gold);
-  color: var(--black);
+  background-color: var(--darkGray);
+  color: var(--white);
   border: none;
   border-radius: 12px;
   font-size: 1.1rem;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(239, 203, 3, 0.3);
+  box-shadow: 0 4px 12px rgba(132, 131, 128, 0.3);
 }
 
 .mirror-cta-button:hover {
+  color: var(--white);
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(239, 203, 3, 0.4);
+  box-shadow: 0 8px 20px rgba(101, 100, 100, 0.4);
 }
 
 .mirrors-features-section {
@@ -2321,8 +2322,17 @@ a {
     justify-content: center;
   }
 
+  .mirrors-features-section{
+    padding: 10px 20px;
+  }
+
+  .mirror-feature-card{
+    padding: 1rem;
+  }
+
   .mirrors-features-grid {
     grid-template-columns: 1fr;
+    gap: 1rem;
   }
 
   .mirrors-features-title {
@@ -2345,6 +2355,18 @@ a {
 
   .quote-section-subtitle {
     font-size: 1rem;
+  }
+
+  .mirror-specs-badge{
+    top: -20px;
+    left: 0;
+    right: auto;
+  }
+
+  .mirror-image {
+    width: 80%;
+    height: 100%;
+    object-fit: cover;
   }
 }
 

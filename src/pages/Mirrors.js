@@ -38,13 +38,13 @@ const SmartMirrors = () => {
     const quoteFormRef = useRef(null);
 
     const mirrorOptions = [
-        { size: '60*40*7', touch: '19-inch', price: 1140, scale: 0.6, dimensions: '60cm × 40cm x 7cm', width: 60, height: 40 },
-        { size: '80*60*7', touch: '19-inch', price: 1370, scale: 0.8, dimensions: '80cm × 60cm x 7cm', width: 80, height: 60 },
-        { size: '80*60*10', touch: '32-inch', price: 1520, scale: 0.8, dimensions: '80cm × 60cm x 10cm', width: 80, height: 60 },
-        { size: '120*60*7', touch: '19-inch', price: 1650, scale: 1.0, dimensions: '120cm × 60cm x 7cm', width: 120, height: 60 },
-        { size: '120*60*10', touch: '32-inch', price: 1800, scale: 1.0, dimensions: '120cm × 60cm x 10cm', width: 120, height: 60 },
-        { size: '160*60*7', touch: '19-inch', price: 1930, scale: 1.2, dimensions: '160cm × 60cm x 7cm', width: 160, height: 60 },
-        { size: '160*60*10', touch: '32-inch', price: 2080, scale: 1.2, dimensions: '160cm × 60cm x 10cm', width: 160, height: 60 },
+        { size: '60*40*7', touch: '19-inch', price: 1140, scale: 0.8, dimensions: '60cm × 40cm x 7cm', width: 120, height: 40 },
+        { size: '80*60*7', touch: '19-inch', price: 1370, scale: 1, dimensions: '80cm × 60cm x 7cm', width: 140, height: 60 },
+        { size: '80*60*10', touch: '32-inch', price: 1520, scale: 1, dimensions: '80cm × 60cm x 10cm', width: 140, height: 60 },
+        { size: '120*60*7', touch: '19-inch', price: 1650, scale: 1.1, dimensions: '120cm × 60cm x 7cm', width: 160, height: 60 },
+        { size: '120*60*10', touch: '32-inch', price: 1800, scale: 1.1, dimensions: '120cm × 60cm x 10cm', width: 160, height: 60 },
+        { size: '160*60*7', touch: '19-inch', price: 1930, scale: 1.3, dimensions: '160cm × 60cm x 7cm', width: 180, height: 60 },
+        { size: '160*60*10', touch: '32-inch', price: 2080, scale: 1.3, dimensions: '160cm × 60cm x 10cm', width: 180, height: 60 },
         { size: '200*80*7', touch: '19-inch', price: 2210, scale: 1.4, dimensions: '200cm × 80cm x 7cm', width: 200, height: 80 },
         { size: '200*80*10', touch: '32-inch', price: 2360, scale: 1.4, dimensions: '200cm × 80cm x 10cm', width: 200, height: 80 },
     ];
