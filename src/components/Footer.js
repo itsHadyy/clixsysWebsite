@@ -19,18 +19,15 @@ function Footer() {
                         <Link to="https://www.facebook.com/Clixsys-102724245572309" aria-label="Clixsys Facebook">
                             <SlSocialFacebook size={32} style={{ width: 32, height: 32 }} />
                         </Link>
-
                     </div>
                     <div>
                         <h4>Address</h4>
-                        <p>Nile Cornish, Cairo, Egypt</p>
-                    </div>
-                </div>
-                <div className="footer-right">
-                    <div>
-                        <h4>General</h4>
-                        <p>+2 011 005 12345</p>
-                        <p>heshamafahmy@clixsys.com</p>
+                        <a href="https://maps.app.goo.gl/Neitw4uEYXRDAxEY7" target="_blank" rel="noopener noreferrer">
+                            <p>Nile City Towers, North Tower, 19th floor, Office 1935, <br />Cornish El Nile, Cairo, 11624</p>
+                        </a>
+                        <a href="tel:+201100512345" aria-label="Clixsys Phone">
+                            <p>+2 011 005 12345</p>
+                        </a>
                     </div>
                     <div>
                         <Link to="/contact" className="btn01">Contact</Link>

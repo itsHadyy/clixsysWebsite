@@ -281,10 +281,8 @@ footer {
 }
 
 .footer-container {
-  display: grid;
-  grid-template-columns: 50% 50%;
   padding: 20px 0;
-  width: 80%;
+  width: 60%;
   margin: auto;
 }
 
@@ -294,6 +292,7 @@ footer {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  gap: 40px;
 }
 
 .social svg {
@@ -937,7 +936,8 @@ form .btn {
 }
 
 .contact {
-  padding-top: 140px;
+  padding: 180px 0;
+  padding-bottom: 40px;
 }
 
 .next-btn,
